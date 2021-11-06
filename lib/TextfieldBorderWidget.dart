@@ -1,22 +1,27 @@
 import 'package:flutter/material.dart';
 
 import 'ButtonWidget.dart';
+import 'Statistiques.dart';
 
 
 class TextfieldBorderWidget extends StatelessWidget {
 
   final numberController = TextEditingController();
+  final textController1 = TextEditingController();
+  final textController2 = TextEditingController();
+  final textController3 = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) =>
       Center(
         child: ListView(
-          padding: EdgeInsets.all(32),
+          padding: EdgeInsets.all(10),
           children: [
 
 
             buildNumber(),
-            const SizedBox(height: 24),
+            const SizedBox(height: 0),
 
 
 
@@ -25,6 +30,7 @@ class TextfieldBorderWidget extends StatelessWidget {
 
             buildText('Recommanderiez vous ce festival à vos proches ?'),
             TextField(
+              controller: textController1,
               decoration: InputDecoration(
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16),
@@ -39,6 +45,7 @@ class TextfieldBorderWidget extends StatelessWidget {
 
             buildText('Et pour quelles raison? '),
             TextField(
+              controller: textController2,
               decoration: InputDecoration(
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16),
@@ -52,25 +59,39 @@ class TextfieldBorderWidget extends StatelessWidget {
             ),
 
             buildText("Pensez vous revenir l'année suivante ? "),
+
             TextField(
+              
+              controller: textController3,
               decoration: InputDecoration(
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16),
                   borderSide: BorderSide(color: Colors.black, width: 3),
+                  
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16),
+                  
                   borderSide: BorderSide(color: Colors.green, width: 3),
                 ),
               ),
             ),
 
+            SizedBox(height:30,),
 
             ButtonWidget(
               text: 'Envoyer',
               onClicked: () {
                 print('Number: ${numberController.text}');
+                print('texte 1: ${textController1.text}');
+                print('texte 2: ${textController2.text}');
+                print('texte 3: ${textController3.text}');
+
+
                 numberController.clear();
+                textController1.clear();
+                textController2.clear();
+                textController3.clear();
 
               },
             ),
@@ -92,11 +113,22 @@ class TextfieldBorderWidget extends StatelessWidget {
       Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Note du festival', style: TextStyle(fontWeight: FontWeight.bold)),
-          const SizedBox(height: 8),
+          buildText('Note du festival'),
+          const SizedBox(height: 6),
           TextField(
             controller: numberController,
+
             decoration: InputDecoration(
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(16),
+                borderSide: BorderSide(color: Colors.black, width: 3),
+
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(16),
+
+                borderSide: BorderSide(color: Colors.green, width: 3),
+              ),
               hintText: '1 à 10',
 
               hintStyle: TextStyle(color: Colors.black),
@@ -112,6 +144,31 @@ class TextfieldBorderWidget extends StatelessWidget {
       );
 
 }
+/*
+class nextPage extends StatefulWidget {
+  late String value;
+
+  @override
+  _nextPageState createState() => new _nextPageState();
+}
+
+class _nextPageState extends State<nextPage> {
+  @override
+  Widget build(BuildContext context) {
+  return new Scaffold(
+    appBar new AppBar(
+      title: new Text("next page"),
+    ),
+    body: new Text("${widget.value}"),
+  ),
+
+}
+}
+*/
+
+
+
+
 
 
 
