@@ -11,3 +11,10 @@ GeneratedPluginRegistrant.java
 key.properties
 **/*.keystore
 **/*.jks
+*.iml
+/.idea/*
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
