@@ -49,7 +49,7 @@ class _MainPageState extends State<MainPage> {
     body: buildPages(),
     bottomNavigationBar: BottomNavigationBar(
       currentIndex: index,
-      selectedItemColor: Colors.grey,
+      selectedItemColor: Colors.purple,
       items: [
         BottomNavigationBarItem(
           icon: Text('Questionnaire'),
