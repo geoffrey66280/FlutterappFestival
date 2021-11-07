@@ -62,7 +62,7 @@ class _MainPageState extends State<MainPage> {
         ),
         BottomNavigationBarItem(
           icon: Text('A propos'),
-          COR title: Text('Festival')
+          title: Text('Festival')
         ),
       ],
       onTap: (int index) => setState(() => this.index = index),
