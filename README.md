@@ -1,13 +1,13 @@
-# festival
+# Languages 
 
 Flutter - Dart project
 contains HTML
 
 Graddle
 
-## Getting Started
+## Purpose of the application
 
-FlutterappFestival is our mobile applications that allows us to ask questions to peoples in a festival,
+FlutterappFestival is our mobile application that allows us to ask questions to peoples in a festival,
 then we'll stock all these informations to make datatable in a website with a database.
 
 Our collaborators are :
@@ -19,4 +19,8 @@ Our collaborators are :
 - Lafontan Yanis
 
 
-# FlutterappFestival
+# Mékanik du rire
+
+This is the festival that we are working for.
+
+
