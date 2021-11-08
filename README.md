@@ -1,17 +1,22 @@
 # festival
 
-A new Flutter project.
+Flutter - Dart project
+contains HTML
+
+Graddle
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+FlutterappFestival is our mobile applications that allows us to ask questions to peoples in a festival,
+then we'll stock all these informations to make datatable in a website with a database.
 
-A few resources to get you started if this is your first Flutter project:
+Our collaborators are :
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+- Servant Geoffrey
+- Ledevedec Maxime
+- Etcheverria Maxime
+- Lloret Leo
+- Lafontan Yanis
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
 # FlutterappFestival
