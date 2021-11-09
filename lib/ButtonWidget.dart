@@ -6,7 +6,8 @@ class ButtonWidget extends StatelessWidget {
 
   const ButtonWidget({
     required this.text,
-    required this.onClicked,
+    required this.onClicked, floatingActionButton,
+
 
   }) ;
 
@@ -21,5 +22,6 @@ class ButtonWidget extends StatelessWidget {
     padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
     textColor: Colors.white,
     onPressed: onClicked,
+
   );
 }

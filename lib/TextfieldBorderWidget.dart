@@ -1,6 +1,7 @@
+import 'package:festival/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-
+import 'Main.dart';
 import 'ButtonWidget.dart';
 import 'Statistiques.dart';
 
@@ -11,6 +12,7 @@ class TextfieldBorderWidget extends StatelessWidget {
   final textController1 = TextEditingController();
   final textController2 = TextEditingController();
   final textController3 = TextEditingController();
+  int _increment = 0;
 
   get checkBoxValue => null;
 
@@ -93,12 +95,16 @@ class TextfieldBorderWidget extends StatelessWidget {
             SizedBox(height:30,),
 
             ButtonWidget(
-              text: 'Envoyer',
+              text: 'Envoyer' ,
+
               onClicked: () {
                 print('Number: ${numberController.text}');
                 print('texte 1: ${textController1.text}');
                 print('texte 2: ${textController2.text}');
                 print('texte 3: ${textController3.text}');
+                _increment ++;
+                print(_increment);
+
 
 
                 numberController.clear();
@@ -108,6 +114,8 @@ class TextfieldBorderWidget extends StatelessWidget {
 
               },
             ),
+
+                buildText("Nombre de formlulaire envoyé : ${_increment}")
 
           ],
         ),
@@ -121,6 +129,7 @@ class TextfieldBorderWidget extends StatelessWidget {
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
         ),
       );
+
 
   Widget buildNumber() =>
       Column(
@@ -156,8 +165,15 @@ class TextfieldBorderWidget extends StatelessWidget {
 
       );
 
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    throw UnimplementedError();
+  }
 
 }
+
+
 /* Checkbox
 Widget build(BuildContext context) {
   return CheckboxListTile(
@@ -258,5 +274,70 @@ class GetCheckValueState extends State<GetCheckValue> {
   }
 }
 
+/* compteur
+class _MyHomePageState extends State<MainPage> {
+  int _counter = 0;
+
+  void _incrementCounter() {
+    setState(() {
+
+      _counter++;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+
+    return Scaffold(
+      appBar: AppBar(
+
+        title: Text(widget.title),
+      ),
+      body: Center(
+
+        child: Column(
+
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const Text(
+              'You have pushed the button this many times:',
+            ),
+            Text(
+              '$_counter',
+              style: Theme.of(context).textTheme.headline4,
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: 'Increment',
+        child: const Icon(Icons.add),
+      ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
 
 
+}
+
+class incrementer extends State<_MyHomePageStateMainPage> {
+  int _counter = 0;
+
+  Widget _incrementCounter(_counter) {
+    setState(() {
+      _counter++;
+
+    }
+    );
+    return _counter;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    throw UnimplementedError();
+  }
+}
+
+class _MyHomePageStateMainPage extends statefulWidget{
+} */
