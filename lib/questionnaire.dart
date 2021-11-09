@@ -1,3 +1,4 @@
+import 'package:festival/main.dart';
 import 'package:flutter/material.dart';
 import 'boutonWidget.dart';
 
@@ -8,6 +9,8 @@ class questionnaire extends StatelessWidget {
   final textController1 = TextEditingController();
   final textController2 = TextEditingController();
   final textController3 = TextEditingController();
+  final GlobalKey<FormFieldState> formFieldKey = GlobalKey();
+
   int _increment = 0;
 
   @override
@@ -21,9 +24,10 @@ class questionnaire extends StatelessWidget {
             const SizedBox(height: 0),
 
             // début d'implémentation des textes
-
             buildText('Recommanderiez vous ce festival à vos proches ?'),
             TextField(
+
+              autocorrect: true,
               controller: textController1,
               decoration: InputDecoration(
                 enabledBorder: OutlineInputBorder(
@@ -37,8 +41,10 @@ class questionnaire extends StatelessWidget {
               ),
             ),
 
-            buildText('Et pour quelles raison? '),
+            buildText('Et pour quelles raisons? '),
             TextField(
+
+              autocorrect: true,
               controller: textController2,
               decoration: InputDecoration(
                 enabledBorder: OutlineInputBorder(
@@ -54,7 +60,9 @@ class questionnaire extends StatelessWidget {
 
             buildText("Pensez vous revenir l'année suivante ? "),
             TextField(
+              autocorrect: true,
               controller: textController3,
+              
               decoration: InputDecoration(
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16),
@@ -88,19 +96,25 @@ class questionnaire extends StatelessWidget {
                 // incrémenter le nbFormulaire
                 _increment ++;
                 print('Numéro du formulaire : ${_increment}');
+
+                // suppresion après envoi
                 numberController.clear();
                 textController1.clear();
                 textController2.clear();
                 textController3.clear();
+
+
               } else {
                 // Suppression des champs de textes
                 numberController.clear();
                 print('veuillez ressaisir une note entre 1 et 10');
+
+
+
                 //ajouter texte sur appli
               }
                 },
             ),
-
 
             SizedBox(height: 30,), // espace
 
@@ -122,6 +136,7 @@ class questionnaire extends StatelessWidget {
         ),
       );
 
+
   Widget buildText(String text) =>
       Container(
         margin: EdgeInsets.fromLTRB(0, 24, 0, 8),
@@ -136,6 +151,7 @@ class questionnaire extends StatelessWidget {
       Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+
           buildText('Note du festival'),
           const SizedBox(height: 6),
           TextField(
@@ -151,7 +167,7 @@ class questionnaire extends StatelessWidget {
                 borderSide: BorderSide(color: Colors.green, width: 3),
               ),
               hintText: '1 à 10',
-              hintStyle: TextStyle(color: Colors.black),
+              hintStyle: TextStyle(color: Colors.red),
               filled: true,
               fillColor: Colors.white,
               border: OutlineInputBorder(),
@@ -185,6 +201,15 @@ class _nextPageState extends State<nextPage> {
 }
 }
 */
+
+class ValidationNote {
+  static String? validate(String value) {
+    if (value.isEmpty) {
+      return "ressaisissez une note correcte";
+    }
+    return null;
+  }
+}
 
 
 
