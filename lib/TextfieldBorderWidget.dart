@@ -19,6 +19,7 @@ class TextfieldBorderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) =>
+
       Center(
         child: ListView(
           padding: EdgeInsets.all(10),
@@ -113,6 +114,19 @@ class TextfieldBorderWidget extends StatelessWidget {
                 textController3.clear();
 
               },
+            ),
+SizedBox(height: 30,),
+            ButtonWidgete(
+              text: 'Annuler' ,
+
+              onClicked: () {
+
+                numberController.clear();
+                textController1.clear();
+                textController2.clear();
+                textController3.clear();
+              },
+
             ),
 
                 buildText("Nombre de formlulaire envoyé : ${_increment}")

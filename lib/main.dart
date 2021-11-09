@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) => MaterialApp(
     debugShowCheckedModeBanner: false,
     title: title,
-    theme: ThemeData(primaryColor: Colors.green),
+
     home: MainPage(title: title), // submit button
 
   );
@@ -36,17 +36,27 @@ class MainPage extends StatefulWidget {
 
   @override
   _MainPageState createState() => _MainPageState();
+
+
 }
 
 class _MainPageState extends State<MainPage> {
   int index = 0;
+  int _counter = 0;
+  void _incrementer() {
+    setState(() {
+      _counter++;
+    });
+  }
 
   @override
   Widget build(BuildContext context) => Scaffold(
+
     appBar: AppBar(
       title: Text(widget.title),
     ),
     body: buildPages(),
+
     bottomNavigationBar: BottomNavigationBar(
       currentIndex: index,
       selectedItemColor: Colors.purple,
@@ -68,6 +78,7 @@ class _MainPageState extends State<MainPage> {
       onTap: (int index) => setState(() => this.index = index),
     ),
   );
+
 
   Widget buildPages() {
     switch (index) {
