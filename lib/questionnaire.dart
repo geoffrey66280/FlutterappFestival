@@ -1,38 +1,27 @@
-import 'package:festival/main.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'Main.dart';
-import 'ButtonWidget.dart';
-import 'Statistiques.dart';
+import 'boutonWidget.dart';
 
+class questionnaire extends StatelessWidget {
 
-class TextfieldBorderWidget extends StatelessWidget {
-
+  // declaration variables
   final numberController = TextEditingController();
   final textController1 = TextEditingController();
   final textController2 = TextEditingController();
   final textController3 = TextEditingController();
   int _increment = 0;
 
-  get checkBoxValue => null;
-
 
   @override
   Widget build(BuildContext context) =>
-
+      // Widget de la page du questionnaire !!!
       Center(
         child: ListView(
           padding: EdgeInsets.all(10),
           children: [
-
-
             buildNumber(),
             const SizedBox(height: 0),
 
-
-
-
-
+            // début d'implémentation des textes
 
             buildText('Recommanderiez vous ce festival à vos proches ?'),
             TextField(
@@ -65,10 +54,7 @@ class TextfieldBorderWidget extends StatelessWidget {
             ),
 
             buildText("Pensez vous revenir l'année suivante ? "),
-
             TextField(
-
-
               controller: textController3,
               decoration: InputDecoration(
                 enabledBorder: OutlineInputBorder(
@@ -84,53 +70,47 @@ class TextfieldBorderWidget extends StatelessWidget {
               ),
             ),
 
+            SizedBox(height:30,), // Espace entre les widgets
 
-
-
-
-
-          
-          
-
-
-            SizedBox(height:30,),
-
+            // Bouton envoyer
             ButtonWidget(
               text: 'Envoyer' ,
-
               onClicked: () {
+                // Quand cliquer sur le bouton alors envoyer les données
                 print('Number: ${numberController.text}');
                 print('texte 1: ${textController1.text}');
                 print('texte 2: ${textController2.text}');
                 print('texte 3: ${textController3.text}');
+
+                // incrémenter le nbFormulaire
                 _increment ++;
                 print(_increment);
 
-
-
+                // Suppression des champs de textes
                 numberController.clear();
                 textController1.clear();
                 textController2.clear();
                 textController3.clear();
-
               },
             ),
-SizedBox(height: 30,),
+
+
+            SizedBox(height: 30,), // espace
+
+            // Bouton Annuler
             ButtonWidgete(
               text: 'Annuler' ,
-
               onClicked: () {
-
+                // Quand cliquer sur annuler => supprimer les champs
                 numberController.clear();
                 textController1.clear();
                 textController2.clear();
                 textController3.clear();
               },
-
             ),
 
+                // nbFormulaire envoyé pas fonctionnel !!!
                 buildText("Nombre de formlulaire envoyé : ${_increment}")
-
           ],
         ),
       );
@@ -140,11 +120,11 @@ SizedBox(height: 30,),
         margin: EdgeInsets.fromLTRB(0, 24, 0, 8),
         child: Text(
           text,
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24), //Police
         ),
       );
 
-
+  // Widget de la note du festival (nombre)
   Widget buildNumber() =>
       Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -158,15 +138,12 @@ SizedBox(height: 30,),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(16),
                 borderSide: BorderSide(color: Colors.black, width: 3),
-
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(16),
-
                 borderSide: BorderSide(color: Colors.green, width: 3),
               ),
               hintText: '1 à 10',
-
               hintStyle: TextStyle(color: Colors.black),
               filled: true,
               fillColor: Colors.white,
@@ -176,33 +153,8 @@ SizedBox(height: 30,),
             keyboardType: TextInputType.number,
           ),
         ],
-
       );
-
-  @override
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    throw UnimplementedError();
-  }
-
 }
-
-
-/* Checkbox
-Widget build(BuildContext context) {
-  return CheckboxListTile(
-    title: const Text('Animate Slowly'),
-    value: timeDilation != 1.0,
-    onChanged: (bool? value) {
-
-    },
-  );
-
-}
-
-*/
-
-
 
 /*
 class nextPage extends StatefulWidget {
@@ -211,7 +163,6 @@ class nextPage extends StatefulWidget {
   @override
   _nextPageState createState() => new _nextPageState();
 }
-
 class _nextPageState extends State<nextPage> {
   @override
   Widget build(BuildContext context) {
@@ -229,129 +180,3 @@ class _nextPageState extends State<nextPage> {
 
 
 
-
-
-
-class GetCheckValue extends StatefulWidget {
-  @override
-  GetCheckValueState createState() {
-    return new GetCheckValueState();
-  }
-}
-
-class GetCheckValueState extends State<GetCheckValue> {
-  bool _isChecked = true;
-  String _currText = '';
-
-  List<String> text = ["InduceSmile.com", "Flutter.io", "google.com"];
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Get check Value Example"),
-      ),
-      body: Column(
-        children: <Widget>[
-          Expanded(
-            child: Center(
-              child: Text(_currText,
-                  style: TextStyle(
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.bold,
-                  )),
-            ),
-          ),
-          Expanded(
-              child: Container(
-                height: 350.0,
-                child: Column(
-                  children: text
-                      .map((t) => CheckboxListTile(
-                    title: Text(t),
-                    value: _isChecked,
-                    onChanged: (val) {
-                      setState(() {
-                        _isChecked = val!;
-                        if (val == true) {
-                          _currText = t;
-                        }
-                      });
-                    },
-                  ))
-                      .toList(),
-                ),
-              )),
-        ],
-      ),
-    );
-  }
-}
-
-/* compteur
-class _MyHomePageState extends State<MainPage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-
-    return Scaffold(
-      appBar: AppBar(
-
-        title: Text(widget.title),
-      ),
-      body: Center(
-
-        child: Column(
-
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
-  }
-
-
-}
-
-class incrementer extends State<_MyHomePageStateMainPage> {
-  int _counter = 0;
-
-  Widget _incrementCounter(_counter) {
-    setState(() {
-      _counter++;
-
-    }
-    );
-    return _counter;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
-  }
-}
-
-class _MyHomePageStateMainPage extends statefulWidget{
-} */

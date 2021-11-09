@@ -1,25 +1,22 @@
 import 'package:flutter/material.dart';
-import 'TextfieldBorderWidget.dart';
 
 
-class Statistiques extends StatefulWidget {
+class statistiques extends StatefulWidget {
   @override
   _TableExample createState() => _TableExample();
 }
-
-
-class _TableExample extends State<Statistiques> {
+class _TableExample extends State<statistiques> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
      appBar: AppBar(title: Text("Tableau"),) ,
       body: DataTable(
-        columns: [
+        columns: const [
           DataColumn(label: Text("Note")),
           DataColumn(label: Text("Année")),
           DataColumn(label: Text("ID")),
         ],
-        rows: [
+        rows: const [
           DataRow(cells: [
           DataCell(Text("1")),
             DataCell(Text("2")),

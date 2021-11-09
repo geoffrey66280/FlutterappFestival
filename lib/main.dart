@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'Statistiques.dart';
-import 'TextfieldBorderWidget.dart';
-import 'TextfieldGenerateWidget.dart';
+import 'statistiques.dart';
+import 'questionnaire.dart';
+import 'aPropos.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,9 +21,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) => MaterialApp(
     debugShowCheckedModeBanner: false,
     title: title,
-
     home: MainPage(title: title), // submit button
-
   );
 }
 
@@ -36,22 +34,13 @@ class MainPage extends StatefulWidget {
 
   @override
   _MainPageState createState() => _MainPageState();
-
-
 }
 
 class _MainPageState extends State<MainPage> {
   int index = 0;
-  int _counter = 0;
-  void _incrementer() {
-    setState(() {
-      _counter++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) => Scaffold(
-
     appBar: AppBar(
       title: Text(widget.title),
     ),
@@ -83,11 +72,11 @@ class _MainPageState extends State<MainPage> {
   Widget buildPages() {
     switch (index) {
       case 0:
-        return TextfieldBorderWidget();
+        return questionnaire();
       case 1:
-        return Statistiques();
-
-
+        return statistiques();
+      case 2:
+        return aPropos();
       default:
        return Container();
 

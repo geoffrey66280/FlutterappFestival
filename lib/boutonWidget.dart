@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 
+// Bouton valider
 class ButtonWidget extends StatelessWidget {
   final String text;
   final VoidCallback onClicked;
 
-
+  // Constructeur
   const ButtonWidget({
     required this.text,
     required this.onClicked, floatingActionButton,
-
-
-
   }) ;
 
   @override
@@ -28,17 +26,14 @@ class ButtonWidget extends StatelessWidget {
   );
 }
 
+// Bouton Annuler
 class ButtonWidgete extends StatelessWidget {
   final String text;
   final VoidCallback onClicked;
 
-
   const ButtonWidgete({
     required this.text,
     required this.onClicked, floatingActionButton,
-
-
-
   }) ;
 
   @override
