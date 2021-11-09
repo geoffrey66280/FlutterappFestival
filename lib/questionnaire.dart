@@ -75,22 +75,30 @@ class questionnaire extends StatelessWidget {
             ButtonWidget(
               text: 'Envoyer' ,
               onClicked: () {
+
+              int note = int.parse(numberController.text);
+              if (note >= 0 && note <= 10) {
                 // Quand cliquer sur le bouton alors envoyer les données
                 print('La note du festival est : ${numberController.text}');
                 print('Recommandation : ${textController1.text}');
                 print('raisons : ${textController2.text}');
                 print('Présence année suivante : ${textController3.text}');
 
+
                 // incrémenter le nbFormulaire
                 _increment ++;
                 print('Numéro du formulaire : ${_increment}');
-
-                // Suppression des champs de textes
                 numberController.clear();
                 textController1.clear();
                 textController2.clear();
                 textController3.clear();
-              },
+              } else {
+                // Suppression des champs de textes
+                numberController.clear();
+                print('veuillez ressaisir une note entre 1 et 10');
+                //ajouter texte sur appli
+              }
+                },
             ),
 
 
