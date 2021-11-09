@@ -10,7 +10,6 @@ class questionnaire extends StatelessWidget {
   final textController3 = TextEditingController();
   int _increment = 0;
 
-
   @override
   Widget build(BuildContext context) =>
       // Widget de la page du questionnaire !!!
@@ -77,14 +76,14 @@ class questionnaire extends StatelessWidget {
               text: 'Envoyer' ,
               onClicked: () {
                 // Quand cliquer sur le bouton alors envoyer les données
-                print('Number: ${numberController.text}');
-                print('texte 1: ${textController1.text}');
-                print('texte 2: ${textController2.text}');
-                print('texte 3: ${textController3.text}');
+                print('La note du festival est : ${numberController.text}');
+                print('Recommandation : ${textController1.text}');
+                print('raisons : ${textController2.text}');
+                print('Présence année suivante : ${textController3.text}');
 
                 // incrémenter le nbFormulaire
                 _increment ++;
-                print(_increment);
+                print('Numéro du formulaire : ${_increment}');
 
                 // Suppression des champs de textes
                 numberController.clear();
@@ -154,7 +153,9 @@ class questionnaire extends StatelessWidget {
           ),
         ],
       );
+
 }
+
 
 /*
 class nextPage extends StatefulWidget {
