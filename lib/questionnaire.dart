@@ -160,7 +160,10 @@ class questionnaireState extends State<questionnaire> {
 
                 // incrémenter le nbFormulaire
                 _increment ++;
-                print('Numéro du formulaire : ${_increment}');
+                setState(() {
+                  print('Numéro du formulaire : ${_increment}');
+                });
+
 
                 // suppresion après envoi
                 numberController.clear();
