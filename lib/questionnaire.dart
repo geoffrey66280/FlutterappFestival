@@ -20,8 +20,7 @@ class questionnaireState extends State<questionnaire> {
 
   int _increment = 0;
 
-  bool isCheckedOui = false;
-  bool isCheckedNon = false;
+  bool isChecked = false;
 
   // Widget de la page du questionnaire !!!
   Widget buildText(String text) =>
@@ -113,10 +112,10 @@ class questionnaireState extends State<questionnaire> {
           Row(
             children: [
               Checkbox(
-                  value: isCheckedOui,
+                  value: isChecked,
                   onChanged: (bool? value) {
                     setState(() {
-                      isCheckedOui = value!;
+                      isChecked = value!;
                     });
                   }
               ),
@@ -127,10 +126,10 @@ class questionnaireState extends State<questionnaire> {
                 ),
               ),
               Checkbox(
-                  value: isCheckedNon,
+                  value: !isChecked,
                   onChanged: (bool? value) {
                     setState(() {
-                      isCheckedNon = value!;
+                      isChecked = value!;
                     });
                   }
               ),
