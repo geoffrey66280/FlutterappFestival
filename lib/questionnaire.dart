@@ -11,6 +11,9 @@ class questionnaire extends StatelessWidget {
   final textController3 = TextEditingController();
   final GlobalKey<FormFieldState> formFieldKey = GlobalKey();
 
+  bool isCheckedOui = false;
+  bool isCheckedNon = false;
+
   int _increment = 0;
 
   @override
@@ -59,22 +62,37 @@ class questionnaire extends StatelessWidget {
             ),
 
             buildText("Pensez vous revenir l'année suivante ? "),
-            TextField(
-              autocorrect: true,
-              controller: textController3,
-              
-              decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(16),
-                  borderSide: BorderSide(color: Colors.black, width: 3),
-
+            Row(
+              children: [
+                Checkbox(
+                    value: isCheckedOui,
+                    onChanged: (bool? value) {
+                      setState() {
+                        isCheckedOui = value!;
+                      };
+                    }
                 ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(16),
-
-                  borderSide: BorderSide(color: Colors.green, width: 3),
+                const Text("Oui",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w400,
+                  ),
                 ),
-              ),
+                Checkbox(
+                    value: isCheckedNon,
+                    onChanged: (bool? value) {
+                      setState() {
+                        isCheckedNon = value!;
+                      };
+                    }
+                ),
+                const Text("Non",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+              ],
             ),
 
             SizedBox(height:30,), // Espace entre les widgets
