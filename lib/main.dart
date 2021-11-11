@@ -1,3 +1,5 @@
+import 'package:festival/test.dart';
+import 'package:festival/test1.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'statistiques.dart';
@@ -63,6 +65,14 @@ class _MainPageState extends State<MainPage> {
           icon: Text('A propos'),
           title: Text('Festival')
         ),
+        BottomNavigationBarItem(
+            icon: Text('Test'),
+            title: Text('Festival')
+        ),
+        BottomNavigationBarItem(
+            icon: Text('Test1'),
+            title: Text('Festival')
+        ),
       ],
       onTap: (int index) => setState(() => this.index = index),
     ),
@@ -77,6 +87,10 @@ class _MainPageState extends State<MainPage> {
         return statistiques();
       case 2:
         return aPropos();
+      case 3:
+        return test();
+      case 4:
+        return test1();
       default:
        return Container();
 
