@@ -22,6 +22,8 @@ class questionnaireState extends State<questionnaire> {
 
   bool isChecked = true;
   bool isChecked1 = false;
+  bool isChecked2 = true;
+  bool isChecked3 = false;
 
   // Widget de la page du questionnaire !!!
   Widget buildText(String text) =>
@@ -74,30 +76,55 @@ class questionnaireState extends State<questionnaire> {
           buildNumber(),
           const SizedBox(height: 0),
 
-          // début d'implémentation des textes
-          buildText('Recommanderiez vous ce festival à vos proches ?'),
-          TextField(
+          buildText("Recommanderiez vous le festival à vos proches ?"),
+          Row(
+            children: [
+              Checkbox(
+                  value: isChecked2,
+                  onChanged: (bool? value) {
+                    setState(() {
+                      isChecked2 = value!;
+                      if (isChecked3 = true) {
+                        isChecked3 = false;
 
-            autocorrect: true,
-            controller: textController1,
-            decoration: InputDecoration(
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(16),
-                borderSide: BorderSide(color: Colors.black, width: 3),
+                      }
+                    });
+                  }
               ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(16),
-                borderSide: BorderSide(color: Colors.green, width: 3),
+              const Text("Oui",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w400,
+                ),
               ),
-            ),
+              Checkbox(
+                  value: isChecked3,
+                  onChanged: (bool? value) {
+                    setState(() {
+                      isChecked3 = value!;
+                      if (isChecked2 = true) {
+                        isChecked2 = false;
+
+                      }
+                    });
+                  }
+              ),
+              const Text("Non",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ],
           ),
 
-          buildText('Et pour quelles raisons? '),
-          TextField(
+          SizedBox(height: 40,),
+          TextFormField(
 
             autocorrect: true,
             controller: textController2,
             decoration: InputDecoration(
+              labelText: 'Pour quelles raisons ?',
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(16),
                 borderSide: BorderSide(color: Colors.black, width: 3),
