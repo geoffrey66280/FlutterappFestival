@@ -1,10 +1,11 @@
+import 'package:festival/acceuil.dart';
 import 'package:festival/test.dart';
 import 'package:festival/test1.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'statistiques.dart';
 import 'questionnaire.dart';
-import 'aPropos.dart';
+import 'a_propos.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
   static const String title = 'Application Festival';
 
   @override
-  Widget build(BuildContext context) => MaterialApp(
+  Widget build(BuildContext context) => const MaterialApp(
     debugShowCheckedModeBanner: false,
     title: title,
     home: MainPage(title: title), // submit button
@@ -51,7 +52,7 @@ class _MainPageState extends State<MainPage> {
     bottomNavigationBar: BottomNavigationBar(
       currentIndex: index,
       selectedItemColor: Colors.purple,
-      items: [
+      items: const [
         BottomNavigationBarItem(
           icon: Text('Questionnaire'),
           title: Text('Festival')
@@ -73,6 +74,10 @@ class _MainPageState extends State<MainPage> {
             icon: Text('Test1'),
             title: Text('Festival')
         ),
+        BottomNavigationBarItem(
+            icon: Text('Acceuil'),
+            title: Text('Festival')
+        ),
       ],
       onTap: (int index) => setState(() => this.index = index),
     ),
@@ -84,13 +89,15 @@ class _MainPageState extends State<MainPage> {
       case 0:
         return questionnaire();
       case 1:
-        return statistiques();
+        return const Statistiques();
       case 2:
-        return aPropos();
+        return const Apropos();
       case 3:
-        return test();
+        return const test();
       case 4:
-        return test1();
+        return const test1();
+      case 5:
+        return const Accueil();
       default:
        return Container();
 

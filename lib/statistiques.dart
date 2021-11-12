@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 
 
-class statistiques extends StatefulWidget {
+class Statistiques extends StatefulWidget {
+  const Statistiques({Key? key}) : super(key: key);
+
   @override
   _TableExample createState() => _TableExample();
 }
-class _TableExample extends State<statistiques> {
+class _TableExample extends State<Statistiques> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     appBar: AppBar(title: Text("Tableau"),) ,
+     appBar: AppBar(title: const Text("Tableau"),) ,
       body: DataTable(
         columns: const [
           DataColumn(label: Text("Note")),
