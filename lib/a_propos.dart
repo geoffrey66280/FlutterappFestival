@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class Apropos extends StatelessWidget {
   const Apropos({Key? key}) : super(key: key);
 
-  static const String _title = 'Flutter Code Sample';
+  static const String _title = "A propos de l'application";
 
   @override
   Widget build(BuildContext context) {
