@@ -29,6 +29,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
+  passwordfield: ^0.1.0
     
 
 
