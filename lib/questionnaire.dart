@@ -12,18 +12,16 @@ class questionnaire extends StatefulWidget {
 class questionnaireState extends State<questionnaire> {
   //déclaration des variables
   final numberController = TextEditingController();
-  final textController1 = TextEditingController();
   final textController2 = TextEditingController();
   final textController3 = TextEditingController();
 
   final GlobalKey<FormFieldState> formFieldKey = GlobalKey();
 
   int _increment = 0;
-
-  bool isChecked = true;
-  bool isChecked1 = false;
-  bool isChecked2 = true;
-  bool isChecked3 = false;
+  bool isChecked = false; // non pour recommandation
+  bool isChecked1 = false; // oui pour recommandation
+  bool isChecked2 = false; // oui pour recommandation
+  bool isChecked3 = false; // non pour recommandation
 
   // Widget de la page du questionnaire !!!
   Widget buildText(String text) =>
@@ -61,8 +59,10 @@ class questionnaireState extends State<questionnaire> {
               fillColor: Colors.white,
               border: OutlineInputBorder(),
             ),
+
             style: TextStyle(color: Colors.black),
             keyboardType: TextInputType.number,
+
           ),
         ],
       );
@@ -134,7 +134,16 @@ class questionnaireState extends State<questionnaire> {
                 borderSide: BorderSide(color: Colors.green, width: 3),
               ),
             ),
+            validator: (String? value) {
+
+              if (value == null) {
+                return 'Veuillez saisir du texte';
+
+              }
+
+            }
           ),
+
 
           buildText("Pensez vous revenir l'année suivante ? "),
           Row(
@@ -184,38 +193,33 @@ class questionnaireState extends State<questionnaire> {
           ButtonWidget(
             text: 'Envoyer' ,
             onClicked: () {
-
+              String raison = textController2.text;
               int note = int.parse(numberController.text);
-              if (note >= 0 && note <= 10) {
-                // Quand cliquer sur le bouton alors envoyer les données
-                print('La note du festival est : ${numberController.text}');
-                print('Recommandation : ${textController1.text}');
-                print('raisons : ${textController2.text}');
-                print('Présence année suivante : ${textController3.text}');
-
-
-                // incrémenter le nbFormulaire
-                _increment ++;
-                setState(() {
-                  print('Numéro du formulaire : ${_increment}');
-                });
-
-
-                // suppresion après envoi
-                numberController.clear();
-                textController1.clear();
-                textController2.clear();
-                textController3.clear();
-
-
-              } else {
+              if (note <= 0 || note >= 10) {
                 // Suppression des champs de textes
                 numberController.clear();
                 print('veuillez ressaisir une note entre 1 et 10');
+              }else {
+                
 
 
+                // Quand cliquer sur le bouton alors envoyer les données
+                print('La note du festival est : ${numberController.text}');
+                print('raisons : ${textController2.text}');
 
-                //ajouter texte sur appli
+                // incrémenter le nbFormulaire
+                setState(() {
+                  print('Numéro du formulaire : ${_increment++}');
+                });
+
+                // suppresion après envoi
+                numberController.clear();
+                textController2.clear();
+                textController3.clear();
+                isChecked2 = false;
+                isChecked3 = false;
+                isChecked1 = false;
+                isChecked = false;
               }
             },
           ),
@@ -228,9 +232,14 @@ class questionnaireState extends State<questionnaire> {
             onClicked: () {
               // Quand cliquer sur annuler => supprimer les champs
               numberController.clear();
-              textController1.clear();
               textController2.clear();
               textController3.clear();
+              setState(() {
+              isChecked2 = false;
+              isChecked3 = false;
+              isChecked1 = false;
+              isChecked = false;
+              });
             },
           ),
 
@@ -264,14 +273,9 @@ class _nextPageState extends State<nextPage> {
 }
 */
 
-class ValidationNote {
-  static String? validate(String value) {
-    if (value.isEmpty) {
-      return "ressaisissez une note correcte";
-    }
-    return null;
-  }
-}
+
+
+
 
 
 
