@@ -10,6 +10,7 @@ class questionnaire extends StatefulWidget {
 }
 
 class questionnaireState extends State<questionnaire> {
+
   //déclaration des variables
   final numberController = TextEditingController();
   final textController2 = TextEditingController();
@@ -21,7 +22,10 @@ class questionnaireState extends State<questionnaire> {
   bool isChecked = false; // non pour recommandation
   bool isChecked1 = false; // oui pour recommandation
   bool isChecked2 = false; // oui pour recommandation
-  bool isChecked3 = false; // non pour recommandation
+  bool isChecked3 = false;
+
+  get note => null; // non pour recommandation
+
 
   // Widget de la page du questionnaire !!!
   Widget buildText(String text) =>
@@ -33,18 +37,20 @@ class questionnaireState extends State<questionnaire> {
         ),
       );
 
-    // Widget de la note du festival (nombre)
+  // Widget de la note du festival (nombre)
   Widget buildNumber() =>
       Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
 
-          buildText('Note du festival'),
+
           const SizedBox(height: 6),
-          TextField(
+          TextFormField(
+
             controller: numberController,
 
             decoration: InputDecoration(
+              labelText: 'Note du festival',
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(16),
                 borderSide: BorderSide(color: Colors.black, width: 3),
@@ -59,13 +65,11 @@ class questionnaireState extends State<questionnaire> {
               fillColor: Colors.white,
               border: OutlineInputBorder(),
             ),
-
-            style: TextStyle(color: Colors.black),
-            keyboardType: TextInputType.number,
-
           ),
+
         ],
       );
+
 
   @override
   Widget build(BuildContext context) {
@@ -86,7 +90,6 @@ class questionnaireState extends State<questionnaire> {
                       isChecked2 = value!;
                       if (isChecked3 = true) {
                         isChecked3 = false;
-
                       }
                     });
                   }
@@ -104,7 +107,6 @@ class questionnaireState extends State<questionnaire> {
                       isChecked3 = value!;
                       if (isChecked2 = true) {
                         isChecked2 = false;
-
                       }
                     });
                   }
@@ -121,27 +123,24 @@ class questionnaireState extends State<questionnaire> {
           SizedBox(height: 40,),
           TextFormField(
 
-            autocorrect: true,
-            controller: textController2,
-            decoration: InputDecoration(
-              labelText: 'Pour quelles raisons ?',
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(16),
-                borderSide: BorderSide(color: Colors.black, width: 3),
+              autocorrect: true,
+              controller: textController2,
+              decoration: InputDecoration(
+                labelText: 'Pour quelles raisons ?',
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(16),
+                  borderSide: BorderSide(color: Colors.black, width: 3),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(16),
+                  borderSide: BorderSide(color: Colors.green, width: 3),
+                ),
               ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(16),
-                borderSide: BorderSide(color: Colors.green, width: 3),
-              ),
-            ),
-            validator: (String? value) {
-
-              if (value == null) {
-                return 'Veuillez saisir du texte';
-
+              validator: (String? value) {
+                if (value == null) {
+                  return 'Veuillez saisir du texte';
+                }
               }
-
-            }
           ),
 
 
@@ -155,7 +154,6 @@ class questionnaireState extends State<questionnaire> {
                       isChecked1 = value!;
                       if (isChecked = true) {
                         isChecked = false;
-
                       }
                     });
                   }
@@ -173,7 +171,6 @@ class questionnaireState extends State<questionnaire> {
                       isChecked = value!;
                       if (isChecked1 = true) {
                         isChecked1 = false;
-
                       }
                     });
                   }
@@ -187,11 +184,11 @@ class questionnaireState extends State<questionnaire> {
             ],
           ),
 
-          SizedBox(height:30,), // Espace entre les widgets
+          SizedBox(height: 30,), // Espace entre les widgets
 
           // Bouton envoyer
           ButtonWidget(
-            text: 'Envoyer' ,
+            text: 'Envoyer',
             onClicked: () {
               String raison = textController2.text;
               int note = int.parse(numberController.text);
@@ -199,10 +196,7 @@ class questionnaireState extends State<questionnaire> {
                 // Suppression des champs de textes
                 numberController.clear();
                 print('veuillez ressaisir une note entre 1 et 10');
-              }else {
-                
-
-
+              } else {
                 // Quand cliquer sur le bouton alors envoyer les données
                 print('La note du festival est : ${numberController.text}');
                 print('raisons : ${textController2.text}');
@@ -228,17 +222,17 @@ class questionnaireState extends State<questionnaire> {
 
           // Bouton Annuler
           ButtonWidgete(
-            text: 'Annuler' ,
+            text: 'Annuler',
             onClicked: () {
               // Quand cliquer sur annuler => supprimer les champs
               numberController.clear();
               textController2.clear();
               textController3.clear();
               setState(() {
-              isChecked2 = false;
-              isChecked3 = false;
-              isChecked1 = false;
-              isChecked = false;
+                isChecked2 = false;
+                isChecked3 = false;
+                isChecked1 = false;
+                isChecked = false;
               });
             },
           ),
@@ -249,30 +243,8 @@ class questionnaireState extends State<questionnaire> {
       ),
     );
   }
-}
-
-
-/*
-class nextPage extends StatefulWidget {
-  late String value;
-
-  @override
-  _nextPageState createState() => new _nextPageState();
-}
-class _nextPageState extends State<nextPage> {
-  @override
-  Widget build(BuildContext context) {
-  return new Scaffold(
-    appBar new AppBar(
-      title: new Text("next page"),
-    ),
-    body: new Text("${widget.value}"),
-  ),
 
 }
-}
-*/
-
 
 
 
