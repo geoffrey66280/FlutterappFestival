@@ -55,10 +55,10 @@ class _MyStatefulWidgetState extends State<seconnecter> {
 - A special character
 - A minimum length of 8 characters
  ''',
-         hintText: 'Default password constraint ',
-        inputDecoration: PasswordDecoration(
-         inputPadding: const EdgeInsets.symmetric(horizontal: 20),
-       ),
+    hintText: 'Default password constraint ',
+    inputDecoration: PasswordDecoration(
+    inputPadding: const EdgeInsets.symmetric(horizontal: 20),
+    ),
     border: PasswordBorder(
     border: OutlineInputBorder(
     borderSide:
