@@ -57,13 +57,13 @@ class _MainPageState extends State<MainPage> {
       selectedItemColor: Colors.purple,
       items: const [
         BottomNavigationBarItem(
-          icon: Text('Questionnaire'),
+          icon: Text('Accueil'),
           title: Text('Festival')
 
         ),
 
         BottomNavigationBarItem(
-          icon: Text('A propos'),
+          icon: Text('Questionnaire'),
           title: Text('Festival')
         ),
         /*
@@ -73,11 +73,11 @@ class _MainPageState extends State<MainPage> {
         ),
 */
         BottomNavigationBarItem(
-            icon: Text('Acceuil'),
+            icon: Text('Se connecter'),
             title: Text('Festival')
         ),
         BottomNavigationBarItem(
-            icon: Text('Se Connecter'),
+            icon: Text('A propos'),
             title: Text('Festival')
         ),
       ],
@@ -89,18 +89,18 @@ class _MainPageState extends State<MainPage> {
   Widget buildPages() {
     switch (index) {
       case 0:
-        return questionnaire();
+        return Accueil();
       case 1:
-        return const Apropos();
+        return questionnaire();
         /*
       case 3:
         return const test();
         */
 
       case 2:
-        return const Accueil();
-      case 3:
         return const seconnecter();
+      case 3:
+        return const Apropos();
       default:
        return Container();
 

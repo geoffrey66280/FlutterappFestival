@@ -38,9 +38,7 @@ class _MyStatefulWidgetState extends State<test> {
                 style: DefaultTextStyle.of(context).style.apply(fontSizeFactor: 1.5),
                 children: const <TextSpan>[
                  ],
-
               ),
-
           ),
 
         CheckboxListTile(
@@ -54,9 +52,7 @@ class _MyStatefulWidgetState extends State<test> {
             isChecked1 = value!;
             if (isChecked = true) {
               isChecked = false;
-
             }
-
           });
         },
       ),
@@ -70,7 +66,6 @@ class _MyStatefulWidgetState extends State<test> {
                 isChecked = value!;
                 if (isChecked1 = true) {
                   isChecked1 = false;
-
                 }
               });
             },
@@ -98,9 +93,7 @@ SizedBox(height: 50,),
               style: DefaultTextStyle.of(context).style.apply(fontSizeFactor: 1.5),
               children: const <TextSpan>[
               ],
-
             ),
-
           ),
           CheckboxListTile(
             controlAffinity: ListTileControlAffinity.leading,
@@ -113,9 +106,7 @@ SizedBox(height: 50,),
                 isChecked2 = value!;
                 if (isChecked3 = true) {
                   isChecked3 = false;
-
                 }
-
               });
             },
           ),
@@ -129,14 +120,11 @@ SizedBox(height: 50,),
                 isChecked3 = value!;
                 if (isChecked2 = true) {
                   isChecked2 = false;
-
                 }
               });
             },
           ),
           SizedBox(height: 30,),
-
-
         ],
       ),
     );
