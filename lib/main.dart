@@ -1,5 +1,5 @@
 import 'package:festival/acceuil.dart';
-import 'package:festival/seConnecter.dart';
+import 'package:festival/seconnecter.dart';
 import 'package:festival/test.dart';
 import 'package:festival/test1.dart';
 import 'package:flutter/material.dart';
@@ -59,22 +59,17 @@ class _MainPageState extends State<MainPage> {
           title: Text('Festival')
 
         ),
-        BottomNavigationBarItem(
-          icon: Text('Statistiques'),
-            title: Text('Festival')
-        ),
+
         BottomNavigationBarItem(
           icon: Text('A propos'),
           title: Text('Festival')
         ),
+        /*
         BottomNavigationBarItem(
             icon: Text('Test'),
             title: Text('Festival')
         ),
-        BottomNavigationBarItem(
-            icon: Text('Test1'),
-            title: Text('Festival')
-        ),
+*/
         BottomNavigationBarItem(
             icon: Text('Acceuil'),
             title: Text('Festival')
@@ -94,17 +89,16 @@ class _MainPageState extends State<MainPage> {
       case 0:
         return questionnaire();
       case 1:
-        return const Statistiques();
-      case 2:
         return const Apropos();
+        /*
       case 3:
         return const test();
-      case 4:
-        return const test1();
-      case 5:
+        */
+
+      case 2:
         return const Accueil();
-      case 6:
-        return const seConnecter();
+      case 3:
+        return const seconnecter();
       default:
        return Container();
 

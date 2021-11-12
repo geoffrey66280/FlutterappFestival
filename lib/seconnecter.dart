@@ -1,16 +1,16 @@
 import 'package:festival/bouton_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:passwordfield/passwordfield.dart';
 
-
-class seConnecter extends StatefulWidget {
-  const seConnecter({Key? key}) : super(key: key);
+class seconnecter extends StatefulWidget {
+  const seconnecter({Key? key}) : super(key: key);
 
   @override
-  State<seConnecter> createState() => _MyStatefulWidgetState();
+  State<seconnecter> createState() => _MyStatefulWidgetState();
 }
 
-class _MyStatefulWidgetState extends State<seConnecter> {
+class _MyStatefulWidgetState extends State<seconnecter> {
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -30,6 +30,7 @@ class _MyStatefulWidgetState extends State<seConnecter> {
                   fontFamily: 'Karla'
               ),
             ),
+
         TextFormField(
           decoration: const InputDecoration(
             icon: Icon(Icons.person),
@@ -44,6 +45,38 @@ class _MyStatefulWidgetState extends State<seConnecter> {
             return (value != null && value.contains('@')) ? 'Do not use the @ char.' : null;
           },
         ),
+            SizedBox(height: 40,),
+    PasswordField(
+    backgroundColor: Colors.blue.withOpacity(0.2),
+    errorMessage: '''
+- A uppercase letter
+- A lowercase letter
+- A digit
+- A special character
+- A minimum length of 8 characters
+ ''',
+    hintText: 'Default password constraint ',
+    inputDecoration: PasswordDecoration(
+    inputPadding: const EdgeInsets.symmetric(horizontal: 20),
+    ),
+    border: PasswordBorder(
+    border: OutlineInputBorder(
+    borderSide:
+    const BorderSide(width: 0, color: Colors.grey),
+    borderRadius: BorderRadius.circular(25.7)),
+    focusedBorder: OutlineInputBorder(
+    borderSide:
+    const BorderSide(width: 0, color: Colors.grey),
+    borderRadius: BorderRadius.circular(25.7),
+    ),
+    enabledBorder: OutlineInputBorder(
+    borderSide:
+    const BorderSide(width: 0, color: Colors.grey),
+    borderRadius: BorderRadius.circular(25.7),
+    ),
+    ),
+    ),
+
 
     ],
     ),
