@@ -1,5 +1,3 @@
-import 'package:festival/bouton_widget.dart';
-import 'package:festival/questionnaire.dart';
 import 'package:festival/seconnecter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -21,14 +19,14 @@ class Accueil extends StatelessWidget {
                 Navigator.push(context,
                   MaterialPageRoute(builder: (context) => const MainPage(title: 'Questionnaire'))
                 );
-              }, child: Text('Questionnaire'),
+              }, child: const Text('Questionnaire'),
             ),
             ElevatedButton(
               onPressed:  () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const MainPage(title: 'Se Connecter'))
+                    MaterialPageRoute(builder: (context) => const seconnecter())
                 );
-              }, child: Text('Se Connecter'),
+              }, child: const Text('Se Connecter'),
             ),
           ],
         ),
