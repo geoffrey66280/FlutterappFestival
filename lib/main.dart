@@ -1,4 +1,4 @@
-import 'package:festival/acceuil.dart';
+import 'package:festival/accueil.dart';
 import 'package:festival/seconnecter.dart';
 import 'package:festival/test.dart';
 import 'package:festival/test1.dart';
@@ -20,6 +20,8 @@ Future main() async {
 
 class MyApp extends StatelessWidget {
   static const String title = 'Application Festival';
+
+  MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) => const MaterialApp(
