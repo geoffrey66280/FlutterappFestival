@@ -24,6 +24,7 @@ class Accueil extends StatelessWidget {
             ),
 
             Image.asset("image/logo.jpg"),
+
             ElevatedButton(
               onPressed:  () {
                 Navigator.push(context,
