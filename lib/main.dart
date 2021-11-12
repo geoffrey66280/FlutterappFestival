@@ -1,4 +1,5 @@
 import 'package:festival/acceuil.dart';
+import 'package:festival/seConnecter.dart';
 import 'package:festival/test.dart';
 import 'package:festival/test1.dart';
 import 'package:flutter/material.dart';
@@ -78,6 +79,10 @@ class _MainPageState extends State<MainPage> {
             icon: Text('Acceuil'),
             title: Text('Festival')
         ),
+        BottomNavigationBarItem(
+            icon: Text('Se Connecter'),
+            title: Text('Festival')
+        ),
       ],
       onTap: (int index) => setState(() => this.index = index),
     ),
@@ -98,6 +103,8 @@ class _MainPageState extends State<MainPage> {
         return const test1();
       case 5:
         return const Accueil();
+      case 6:
+        return const seConnecter();
       default:
        return Container();
 
