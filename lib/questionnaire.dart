@@ -42,13 +42,9 @@ class questionnaireState extends State<questionnaire> {
       Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-
-
           const SizedBox(height: 6),
           TextFormField(
-
             controller: numberController,
-
             decoration: InputDecoration(
               labelText: 'Note du festival',
               enabledBorder: OutlineInputBorder(
@@ -70,10 +66,18 @@ class questionnaireState extends State<questionnaire> {
         ],
       );
 
-
+  int index = 0;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    String titl = 'Questionnaire';
+    return MaterialApp(
+      title: titl,
+
+      home: Scaffold(
+
+        appBar: AppBar(
+        title: Text(titl),
+        ),
       body: ListView(
         padding: EdgeInsets.all(10),
         children: [
@@ -240,6 +244,7 @@ class questionnaireState extends State<questionnaire> {
           // nbFormulaire envoyé pas fonctionnel !!!
           buildText("Nombre de formlulaire envoyé : ${_increment}")
         ],
+      ),
       ),
     );
   }

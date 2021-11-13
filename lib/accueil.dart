@@ -10,7 +10,13 @@ class Accueil extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    String titl = 'Accueil';
+    return MaterialApp(
+        title: titl,
+        home: Scaffold(
+        appBar: AppBar(
+        title: Text(titl),
+    ),
       body: Center(
         child: Column(
           children: [
@@ -55,6 +61,7 @@ class Accueil extends StatelessWidget {
           ],
         ),
       ),
+        ),
     );
   }
 }

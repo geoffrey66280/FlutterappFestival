@@ -1,4 +1,5 @@
 import 'package:festival/bouton_widget.dart';
+import 'package:festival/questionnaire.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:passwordfield/passwordfield.dart';
@@ -9,16 +10,25 @@ class seconnecter extends StatefulWidget {
   @override
   State<seconnecter> createState() => _MyStatefulWidgetState();
 }
-
 class _MyStatefulWidgetState extends State<seconnecter> {
+  String titl = 'Se Connecter';
+  TextEditingController controllerId = TextEditingController();
+  TextEditingController controllerMDP = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: ListView(
-          padding: EdgeInsets.all(10),
-          children: [
+    return MaterialApp(
+      title: titl,
+
+          home: Scaffold(
+          appBar: AppBar(
+          title: Text(titl),
+    ),
+            body: ListView(
+              children: <Widget>[
+          SizedBox(height: 40,),
             Text.rich(
               TextSpan(
+
                 children: <TextSpan>[
                   TextSpan(text: '5000 ', style: TextStyle(color: Colors.white)),
                   TextSpan(text: 'Page de connexion', style: TextStyle(color: Colors.blue)),
@@ -30,8 +40,9 @@ class _MyStatefulWidgetState extends State<seconnecter> {
                   fontFamily: 'Karla'
               ),
             ),
-
+                SizedBox(height: 40,),
         TextFormField(
+          controller: controllerId,
           decoration: const InputDecoration(
             icon: Icon(Icons.person),
             hintText: 'Veuillez saisir votre identifiant',
@@ -47,15 +58,9 @@ class _MyStatefulWidgetState extends State<seconnecter> {
         ),
             SizedBox(height: 40,),
     PasswordField(
-    backgroundColor: Colors.blue.withOpacity(0.2),
-    errorMessage: '''
-- A uppercase letter
-- A lowercase letter
-- A digit
-- A special character
-- A minimum length of 8 characters
- ''',
-    hintText: 'Default password constraint ',
+      controller: controllerMDP,
+    backgroundColor: Colors.white.withOpacity(0.2),
+    hintText: 'Mot de passe',
     inputDecoration: PasswordDecoration(
     inputPadding: const EdgeInsets.symmetric(horizontal: 20),
     ),
@@ -76,12 +81,23 @@ class _MyStatefulWidgetState extends State<seconnecter> {
     ),
     ),
     ),
+                SizedBox(height: 50,),
 
-
-    ],
-    ),
-
-    );
-
+                ButtonWidget(
+                  text: 'Envoyer',
+                  onClicked: () {
+      if (controllerId.text != 'admin' || controllerMDP.text != 'admin') {
+        controllerId.clear();
+        controllerMDP.clear();
+                    } else {Navigator.push(context,
+          MaterialPageRoute(builder: (context) => questionnaire())
+                     );
+                    }
+                  },
+                ),
+              ],
+            ),
+           ),
+         );
+      }
   }
-}

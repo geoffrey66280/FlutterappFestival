@@ -19,7 +19,7 @@ Future main() async {
 }
 
 class MyApp extends StatelessWidget {
-  static const String title = 'Application Festival';
+  static const String title = 'Accueil';
 
   MyApp({Key? key}) : super(key: key);
 
@@ -47,9 +47,7 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-    appBar: AppBar(
-      title: Text(widget.title),
-    ),
+
     body: buildPages(),
 
     bottomNavigationBar: BottomNavigationBar(
