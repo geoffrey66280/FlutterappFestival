@@ -1,5 +1,7 @@
 import 'package:festival/main.dart';
+import 'package:festival/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:syncfusion_flutter_sliders/sliders.dart';
 import 'bouton_widget.dart';
 
 class questionnaire extends StatefulWidget {
@@ -15,19 +17,16 @@ class questionnaireState extends State<questionnaire> {
   final numberController = TextEditingController();
   final textController2 = TextEditingController();
   final textController3 = TextEditingController();
-
-  final GlobalKey<FormFieldState> formFieldKey = GlobalKey();
-
+  double _value =0.5;
   int _increment = 0;
   bool isChecked = false; // non pour recommandation
   bool isChecked1 = false; // oui pour recommandation
   bool isChecked2 = false; // oui pour recommandation
   bool isChecked3 = false;
 
-  get note => null; // non pour recommandation
-
 
   // Widget de la page du questionnaire !!!
+
   Widget buildText(String text) =>
       Container(
         margin: EdgeInsets.fromLTRB(0, 24, 0, 8),
@@ -37,52 +36,74 @@ class questionnaireState extends State<questionnaire> {
         ),
       );
 
+
   // Widget de la note du festival (nombre)
   Widget buildNumber() =>
+
       Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(height: 6),
-          TextFormField(
-            controller: numberController,
-            decoration: InputDecoration(
-              labelText: 'Note du festival',
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(16),
-                borderSide: BorderSide(color: Colors.black, width: 3),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(16),
-                borderSide: BorderSide(color: Colors.green, width: 3),
-              ),
-              hintText: '1 à 10',
-              hintStyle: TextStyle(color: Colors.red),
-              filled: true,
-              fillColor: Colors.white,
-              border: OutlineInputBorder(),
-            ),
-          ),
+
 
         ],
       );
 
   int index = 0;
+  int indexTop = 0;
   @override
   Widget build(BuildContext context) {
     String titl = 'Questionnaire';
+    final labels = ['0','1','2','3','4','5','6','7','8','9','10'];
+    final double min =0;
+    final double max = 10;
+    final divisions = labels.length;
     return MaterialApp(
       title: titl,
-
       home: Scaffold(
-
         appBar: AppBar(
         title: Text(titl),
         ),
+
       body: ListView(
+
         padding: EdgeInsets.all(10),
         children: [
           buildNumber(),
           const SizedBox(height: 0),
+          Center(
+          child: buildText('Note du festival'),
+          ),
+
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: Utils.modelBuilder(
+              labels,
+                (index, label) {
+                final selectedColor = Colors.black;
+                final unselectedColor = Colors.black.withOpacity(0.3);
+                final isSelected = index <= indexTop;
+                final color = isSelected ? selectedColor : unselectedColor;
+
+                return buildLabel(label: labels[index], color: color);
+                },
+            )
+            ),
+          ),
+
+          Slider(
+            value: indexTop.toDouble(),
+            min: 0,
+            max: 10,
+            divisions: 10,
+            activeColor: Colors.blue,
+            label: labels[indexTop],
+            onChanged: (_value) => setState(() => this.indexTop = _value.toInt()),
+
+            ),
+
 
           buildText("Recommanderiez vous le festival à vos proches ?"),
           Row(
@@ -115,6 +136,7 @@ class questionnaireState extends State<questionnaire> {
                     });
                   }
               ),
+
               const Text("Non",
                 style: TextStyle(
                   fontSize: 20,
@@ -123,6 +145,7 @@ class questionnaireState extends State<questionnaire> {
               ),
             ],
           ),
+
 
           SizedBox(height: 40,),
           TextFormField(
@@ -195,30 +218,22 @@ class questionnaireState extends State<questionnaire> {
             text: 'Envoyer',
             onClicked: () {
               String raison = textController2.text;
-              int note = int.parse(numberController.text);
-              if (note <= 0 || note >= 10) {
-                // Suppression des champs de textes
-                numberController.clear();
-                print('veuillez ressaisir une note entre 1 et 10');
-              } else {
                 // Quand cliquer sur le bouton alors envoyer les données
-                print('La note du festival est : ${numberController.text}');
+                print('La note du festival est : ${indexTop}');
                 print('raisons : ${textController2.text}');
-
                 // incrémenter le nbFormulaire
                 setState(() {
                   print('Numéro du formulaire : ${_increment++}');
                 });
 
                 // suppresion après envoi
-                numberController.clear();
                 textController2.clear();
                 textController3.clear();
                 isChecked2 = false;
                 isChecked3 = false;
                 isChecked1 = false;
                 isChecked = false;
-              }
+
             },
           ),
 
@@ -248,6 +263,29 @@ class questionnaireState extends State<questionnaire> {
       ),
     );
   }
+  Widget buildSideLabel(double value) => Container(
+    width: 25,
+    child: Text(
+      value.round().toString(),
+      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+    ),
+  );
+
+  Widget buildLabel({
+    required String label,
+
+    required Color color,
+  }) =>
+      Container(
+        child: Text(
+          label,
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ).copyWith(color: color),
+        ),
+      );
 
 }
 

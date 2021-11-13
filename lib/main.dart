@@ -45,7 +45,8 @@ class _MainPageState extends State<MainPage> {
   int index = 0;
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) =>
+      Scaffold(
 
     body: buildPages(),
 /*
