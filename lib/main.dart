@@ -1,10 +1,7 @@
 import 'package:festival/accueil.dart';
 import 'package:festival/seconnecter.dart';
-import 'package:festival/test.dart';
-import 'package:festival/test1.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'statistiques.dart';
 import 'questionnaire.dart';
 import 'a_propos.dart';
 

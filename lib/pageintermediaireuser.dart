@@ -1,14 +1,22 @@
-import 'package:festival/modifierquestion.dart';
 import 'package:festival/questionnaire.dart';
-import 'package:festival/seconnecter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'a_propos.dart';
-import 'main.dart';
 
+/**?
+ * ? Classe pageintermediaire: page après connexion
+ * ? pageintermediaire Constante: clé
+   ? */
 class pageintermediaireuser extends StatelessWidget {
   const pageintermediaireuser({Key? key}) : super(key: key);
 
+  /**+
+   * + home Scaffold: Affiche le titre de la page
+   * + body Center: Affichage des widgets au centre
+   * + ElevatedButton: bouton A propos qui redirige vers la page A propos
+   * + ElevatedButton: bouton se connecter pour arriver sur la page de login
+   * + @return MaterialApp
+      +*/
   @override
   Widget build(BuildContext context) {
     String titl = 'Mékanik du rire';
@@ -22,6 +30,7 @@ class pageintermediaireuser extends StatelessWidget {
           child: Column(
             children: [
 
+            // !ElevatedButton
               ElevatedButton(
                 onPressed:  () {
                   Navigator.push(context,
@@ -30,10 +39,9 @@ class pageintermediaireuser extends StatelessWidget {
                 }, child: const Text('A propos'),
               ),
 
-
-
-
               SizedBox(height: 100,),
+
+              // !ElevatedButton
               ElevatedButton(
                 onPressed:  () {
                   Navigator.push(context,

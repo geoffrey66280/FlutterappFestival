@@ -1,23 +1,39 @@
 import 'package:festival/bouton_widget.dart';
-import 'package:festival/pageintermediaireadmin.dart';
 import 'package:festival/pageintermediaireuser.dart';
-import 'package:festival/questionnaire.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:passwordfield/passwordfield.dart';
 
+/**?
+ * ? Classe seconnecter: page de connexion de l'utilisateur
+   ?*/
 class seconnecter extends StatefulWidget {
   const seconnecter({Key? key}) : super(key: key);
 
+  // -Override: créer un état de la classe se connecter qui devient l'état de MyStatefulWidgetState
   @override
   State<seconnecter> createState() => _MyStatefulWidgetState();
 }
-
+/**?
+ * ? Classe _MyStatefulWidgetState: page de connexion de l'utilisateur
+ * ? extends de l'état de la classe seconnecter
+ * ? titl: Titre de la page
+ * ? controllerId: texte saisie par l'utilisateur sur la zone identifiant du Widget TextFormField
+ * ? controllerMDP: texte saisie par l'utilisateur sur la zone Mot de passe du Widget passWordField
+   ? */
 class _MyStatefulWidgetState extends State<seconnecter> {
   String titl = 'Se Connecter';
   TextEditingController controllerId = TextEditingController();
   TextEditingController controllerMDP = TextEditingController();
 
+  /**+
+   * + home Scaffold: Affiche le titre de la page
+   * + body ListView: Affichage des widgets sur la vue de l'app
+   * + TextFormField: affiche la boite de saisie de l'identifiant utilisateur
+   * +passWordField: affiche la boite de saisie du mot de passe de l'utilisateur
+   * + ButtonWidget seconnecter: bouton qui permet à l'utilisateur de se connecter (conditions si mauvais identifiants)
+   * + @return MaterialApp
+      +*/
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -31,6 +47,8 @@ class _MyStatefulWidgetState extends State<seconnecter> {
             SizedBox(
               height: 40,
             ),
+
+            // !TextRich
             Text.rich(
               TextSpan(
                 children: <TextSpan>[
@@ -47,6 +65,8 @@ class _MyStatefulWidgetState extends State<seconnecter> {
             SizedBox(
               height: 40,
             ),
+
+            // !TextFormField
             TextFormField(
               controller: controllerId,
               decoration: const InputDecoration(
@@ -67,6 +87,8 @@ class _MyStatefulWidgetState extends State<seconnecter> {
             SizedBox(
               height: 40,
             ),
+
+            // !PasswordField
             PasswordField(
               controller: controllerMDP,
               backgroundColor: Colors.white.withOpacity(0.2),
@@ -91,16 +113,12 @@ class _MyStatefulWidgetState extends State<seconnecter> {
             SizedBox(
               height: 50,
             ),
+
+            // !ButtonWidget
             ButtonWidget(
               text: 'Envoyer',
               onClicked: () {
-                if (controllerId.text == 'admin' &&
-                    controllerMDP.text == 'admin') {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => pageintermediaireadmin()));
-                } else if (controllerId.text == 'user' &&
+               if (controllerId.text == 'user' &&
                     controllerMDP.text == 'user') {
                   Navigator.push(
                       context,

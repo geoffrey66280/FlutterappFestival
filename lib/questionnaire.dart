@@ -11,10 +11,12 @@ class questionnaire extends StatefulWidget {
     return questionnaireState();
   }
 }
+/** ?
+ * ? Classe questionnaire qui définit la page pour remplire le questionnaire
+ ? */
 
 class questionnaireState extends State<questionnaire> {
   //déclaration des variables
-  final numberController = TextEditingController();
   final textController2 = TextEditingController();
   final textController3 = TextEditingController();
   double _value = 0.5;
@@ -203,7 +205,6 @@ class questionnaireState extends State<questionnaire> {
 
                 // suppresion après envoi
                 textController2.clear();
-                textController3.clear();
                 isChecked2 = false;
                 isChecked3 = false;
                 isChecked1 = false;
@@ -220,9 +221,7 @@ class questionnaireState extends State<questionnaire> {
               text: 'Annuler',
               onClicked: () {
                 // Quand cliquer sur annuler => supprimer les champs
-                numberController.clear();
                 textController2.clear();
-                textController3.clear();
                 setState(() {
                   isChecked2 = false;
                   isChecked3 = false;
