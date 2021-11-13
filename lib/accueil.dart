@@ -29,8 +29,10 @@ class Accueil extends StatelessWidget {
               }, child: const Text('A propos'),
             ),
 
-            Image.asset("image/logo.jpg"),
-
+            CircleAvatar(
+              radius: 100,
+            child: Image.asset("image/logo.jpg"),
+            ),
             
             SizedBox(height: 20,),
             ElevatedButton(
