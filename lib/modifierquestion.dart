@@ -20,24 +20,20 @@ class modifierquestion extends StatelessWidget {
         body: Center(
           child: Column(
             children: [
-
               ElevatedButton(
-                onPressed:  () {
+                onPressed: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const Apropos())
-                  );
-                }, child: const Text('A propos'),
+                      MaterialPageRoute(builder: (context) => const Apropos()));
+                },
+                child: const Text('A propos'),
               ),
-
-
-
-
-              SizedBox(height: 100,),
+              SizedBox(
+                height: 100,
+              ),
               ElevatedButton(
-                onPressed:  () {
+                onPressed: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => questionnaire())
-                  );
+                      MaterialPageRoute(builder: (context) => questionnaire()));
                 },
                 child: const Text('Questionnaire'),
                 style: ElevatedButton.styleFrom(
@@ -46,7 +42,6 @@ class modifierquestion extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(50))),
               ),
-
             ],
           ),
         ),

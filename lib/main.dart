@@ -25,10 +25,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => const MaterialApp(
-    debugShowCheckedModeBanner: false,
-    title: title,
-    home: MainPage(title: title), // submit button
-  );
+        debugShowCheckedModeBanner: false,
+        title: title,
+        home: MainPage(title: title), // submit button
+      );
 }
 
 class MainPage extends StatefulWidget {
@@ -41,14 +41,13 @@ class MainPage extends StatefulWidget {
   @override
   _MainPageState createState() => _MainPageState();
 }
+
 class _MainPageState extends State<MainPage> {
   int index = 0;
 
   @override
-  Widget build(BuildContext context) =>
-      Scaffold(
-
-    body: buildPages(),
+  Widget build(BuildContext context) => Scaffold(
+        body: buildPages(),
 /*
     bottomNavigationBar: BottomNavigationBar(
       currentIndex: index,
@@ -81,8 +80,7 @@ class _MainPageState extends State<MainPage> {
       ],
       onTap: (int index) => setState(() => this.index = index),
     ),*/
-  );
-
+      );
 
   Widget buildPages() {
     switch (index) {
@@ -90,7 +88,7 @@ class _MainPageState extends State<MainPage> {
         return Accueil();
       case 1:
         return questionnaire();
-        /*
+      /*
       case 3:
         return const test();
         */
@@ -100,12 +98,7 @@ class _MainPageState extends State<MainPage> {
       case 3:
         return const Apropos();
       default:
-       return Container();
-
+        return Container();
     }
   }
-
-
 }
-
-
