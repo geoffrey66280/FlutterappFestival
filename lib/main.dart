@@ -41,7 +41,6 @@ class MainPage extends StatefulWidget {
   @override
   _MainPageState createState() => _MainPageState();
 }
-
 class _MainPageState extends State<MainPage> {
   int index = 0;
 
@@ -49,7 +48,7 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) => Scaffold(
 
     body: buildPages(),
-
+/*
     bottomNavigationBar: BottomNavigationBar(
       currentIndex: index,
       selectedItemColor: Colors.purple,
@@ -64,12 +63,12 @@ class _MainPageState extends State<MainPage> {
           icon: Text('Questionnaire'),
           title: Text('Festival')
         ),
-        /*
+
         BottomNavigationBarItem(
             icon: Text('Test'),
             title: Text('Festival')
         ),
-*/
+
         BottomNavigationBarItem(
             icon: Text('Se connecter'),
             title: Text('Festival')
@@ -80,7 +79,7 @@ class _MainPageState extends State<MainPage> {
         ),
       ],
       onTap: (int index) => setState(() => this.index = index),
-    ),
+    ),*/
   );
 
 
@@ -104,6 +103,8 @@ class _MainPageState extends State<MainPage> {
 
     }
   }
+
+
 }
 
 
