@@ -1,4 +1,5 @@
 import 'package:festival/bouton_widget.dart';
+import 'package:festival/pageintermediaire.dart';
 import 'package:festival/questionnaire.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -90,7 +91,7 @@ class _MyStatefulWidgetState extends State<seconnecter> {
         controllerId.clear();
         controllerMDP.clear();
                     } else {Navigator.push(context,
-          MaterialPageRoute(builder: (context) => questionnaire())
+          MaterialPageRoute(builder: (context) => pageintermediaire())
                      );
                     }
                   },
