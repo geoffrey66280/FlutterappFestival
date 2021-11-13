@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'a_propos.dart';
 import 'main.dart';
 
-class pageintermediaire extends StatelessWidget {
-  const pageintermediaire({Key? key}) : super(key: key);
+class pageintermediaireuser extends StatelessWidget {
+  const pageintermediaireuser({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -49,19 +49,6 @@ class pageintermediaire extends StatelessWidget {
               ),
 
               SizedBox(height: 50,),
-              ElevatedButton(
-                onPressed:  () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => modifierquestion())
-                  );
-                },
-                child: const Text('Modifier les questions'),
-                style: ElevatedButton.styleFrom(
-                    primary: Colors.blue,
-                    fixedSize: const Size(300, 75),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50))),
-              ),
             ],
           ),
         ),

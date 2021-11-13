@@ -1,5 +1,6 @@
 import 'package:festival/bouton_widget.dart';
-import 'package:festival/pageintermediaire.dart';
+import 'package:festival/pageintermediaireadmin.dart';
+import 'package:festival/pageintermediaireuser.dart';
 import 'package:festival/questionnaire.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -87,12 +88,18 @@ class _MyStatefulWidgetState extends State<seconnecter> {
                 ButtonWidget(
                   text: 'Envoyer',
                   onClicked: () {
-      if (controllerId.text != 'admin' || controllerMDP.text != 'admin') {
-        controllerId.clear();
-        controllerMDP.clear();
-                    } else {Navigator.push(context,
-          MaterialPageRoute(builder: (context) => pageintermediaire())
-                     );
+      if (controllerId.text == 'admin' && controllerMDP.text == 'admin') {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => pageintermediaireadmin()));
+
+    } else if (controllerId.text == 'user' && controllerMDP.text == 'user'){
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => pageintermediaireuser())
+        );
+                    } else {
+                       controllerId.clear();
+                       controllerMDP.clear();
+
                     }
                   },
                 ),
