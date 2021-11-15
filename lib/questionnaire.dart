@@ -17,6 +17,9 @@ class questionnaire extends StatefulWidget {
 
 class questionnaireState extends State<questionnaire> {
   //déclaration des variables
+
+  String def = "";
+  String dropdownValue = 'Toulouse';
   final textController2 = TextEditingController();
   final textController3 = TextEditingController();
   double _value = 0.5;
@@ -40,9 +43,10 @@ class questionnaireState extends State<questionnaire> {
     final double min = 0;
     final double max = 10;
     final divisions = labels.length;
-    return MaterialApp(
-      title: titl,
-      home: Scaffold(
+    return Scaffold(
+
+
+
         appBar: AppBar(
           title: Text(titl),
         ),
@@ -145,55 +149,35 @@ class questionnaireState extends State<questionnaire> {
                     return 'Veuillez saisir du texte';
                   }
                 }),
+SizedBox(height: 70,),
 
-            buildText("Pensez vous revenir l'année suivante ? "),
-            Row(
-              children: [
-                Checkbox(
-                    value: isChecked1,
-                    onChanged: (bool? value) {
-                      setState(() {
-                        isChecked1 = value!;
-                        if (isChecked = true) {
-                          isChecked = false;
-                        }
-                      });
-                    }),
-                const Text(
-                  "Oui",
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w400,
-                  ),
+           Container(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                Center(
+                  child: builddrop(context),
+
                 ),
-                Checkbox(
-                    value: isChecked,
-                    onChanged: (bool? value) {
-                      setState(() {
-                        isChecked = value!;
-                        if (isChecked1 = true) {
-                          isChecked1 = false;
-                        }
-                      });
-                    }),
-                const Text(
-                  "Non",
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
-              ],
+
+                ],
+              )
             ),
 
             SizedBox(
               height: 30,
             ), // Espace entre les widgets
 
+
             // Bouton envoyer
             ButtonWidget(
               text: 'Envoyer',
               onClicked: () {
+
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Formulaire envoyé')
+                  )
+                  );
+
                 String raison = textController2.text;
                 // Quand cliquer sur le bouton alors envoyer les données
                 print('La note du festival est : ${indexTop}');
@@ -209,6 +193,8 @@ class questionnaireState extends State<questionnaire> {
                 isChecked3 = false;
                 isChecked1 = false;
                 isChecked = false;
+
+
               },
             ),
 
@@ -235,8 +221,8 @@ class questionnaireState extends State<questionnaire> {
             buildText("Nombre de formlulaire envoyé : ${_increment}")
           ],
         ),
-      ),
     );
+
   }
 
   Widget buildLabel({
@@ -276,4 +262,33 @@ class questionnaireState extends State<questionnaire> {
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24), //Police
         ),
       );
+
+
+  Widget builddrop(BuildContext context) {
+    return DropdownButton<String>(
+      value: dropdownValue,
+      icon: const Icon(Icons.arrow_downward),
+      iconSize: 24,
+      elevation: 16,
+      style: const TextStyle(color: Colors.deepPurple),
+      underline: Container(
+        height: 2,
+        color: Colors.deepPurpleAccent,
+      ),
+      onChanged: (String? newValue) {
+        setState(() {
+          dropdownValue = newValue!;
+        });
+      },
+      items: <String>['Toulouse', 'Blagnac', 'Pibrac', 'Montaudran']
+          .map<DropdownMenuItem<String>>((String value) {
+        return DropdownMenuItem<String>(
+          value: value,
+          child: Text(value),
+        );
+      }).toList(),
+    );
+  }
+
+
 }
