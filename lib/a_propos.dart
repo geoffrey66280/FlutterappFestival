@@ -8,9 +8,7 @@ class Apropos extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String titl = 'A Propos';
-    return MaterialApp(
-        title: titl,
-        home: Scaffold(
+    return Scaffold(
         appBar: AppBar(
         title: Text(titl),
     ),
@@ -20,7 +18,7 @@ class Apropos extends StatelessWidget {
 
       ],
     ),
-    ),
+
     );
   }
 }

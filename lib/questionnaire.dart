@@ -3,6 +3,7 @@ import 'package:festival/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 
+import 'a_propos.dart';
 import 'bouton_widget.dart';
 
 class questionnaire extends StatefulWidget {
@@ -47,9 +48,23 @@ class questionnaireState extends State<questionnaire> {
 
 
 
-        appBar: AppBar(
-          title: Text(titl),
-        ),
+      appBar: AppBar(
+        title: Text("Accueil"),
+        actions: <Widget>[
+          Padding(
+              padding: EdgeInsets.only(right: 20.0),
+              child: GestureDetector(
+                onTap: () {Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const Apropos())
+                );},
+                child: Icon(
+                    Icons.more_vert
+
+                ),
+              )
+          ),
+        ],
+      ),
         body: ListView(
           padding: EdgeInsets.all(10),
           children: [
@@ -149,7 +164,7 @@ class questionnaireState extends State<questionnaire> {
                     return 'Veuillez saisir du texte';
                   }
                 }),
-SizedBox(height: 70,),
+        SizedBox(height: 30,),
 
            Container(
               child: Column(
@@ -265,28 +280,33 @@ SizedBox(height: 70,),
 
 
   Widget builddrop(BuildContext context) {
-    return DropdownButton<String>(
-      value: dropdownValue,
-      icon: const Icon(Icons.arrow_downward),
-      iconSize: 24,
-      elevation: 16,
-      style: const TextStyle(color: Colors.deepPurple),
-      underline: Container(
-        height: 2,
-        color: Colors.deepPurpleAccent,
-      ),
-      onChanged: (String? newValue) {
-        setState(() {
-          dropdownValue = newValue!;
-        });
-      },
-      items: <String>['Toulouse', 'Blagnac', 'Pibrac', 'Montaudran']
-          .map<DropdownMenuItem<String>>((String value) {
-        return DropdownMenuItem<String>(
-          value: value,
-          child: Text(value),
-        );
-      }).toList(),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        DropdownButton<String>(
+          value: dropdownValue,
+          icon: const Icon(Icons.arrow_downward),
+          iconSize: 24,
+          elevation: 16,
+          style: const TextStyle(color: Colors.deepPurple),
+          underline: Container(
+            height: 2,
+            color: Colors.deepPurpleAccent,
+          ),
+          onChanged: (String? newValue) {
+            setState(() {
+              dropdownValue = newValue!;
+            });
+          },
+          items: <String>['Toulouse', 'Blagnac', 'Pibrac', 'Montaudran']
+              .map<DropdownMenuItem<String>>((String value) {
+            return DropdownMenuItem<String>(
+              value: value,
+              child: Text(value),
+            );
+          }).toList(),
+        ),
+      ],
     );
   }
 

@@ -1,8 +1,11 @@
 import 'package:festival/bouton_widget.dart';
 import 'package:festival/pageintermediaireuser.dart';
+import 'package:festival/questionnaire.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:passwordfield/passwordfield.dart';
+
+import 'a_propos.dart';
 
 /**?
  * ? Classe seconnecter: page de connexion de l'utilisateur
@@ -36,103 +39,129 @@ class _MyStatefulWidgetState extends State<seconnecter> {
       +*/
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: titl,
-      home: Scaffold(
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).unfocus(),
+      child: Scaffold(
+
         appBar: AppBar(
-          title: Text(titl),
-        ),
-        body: ListView(
-          children: <Widget>[
-            SizedBox(
-              height: 40,
-            ),
+          title: Text("Page de connexion"),
 
-            // !TextRich
-            Text.rich(
-              TextSpan(
-                children: <TextSpan>[
-                  TextSpan(
-                      text: '5000 ', style: TextStyle(color: Colors.white)),
-                  TextSpan(
-                      text: 'Page de connexion',
-                      style: TextStyle(color: Colors.blue)),
-                ],
-              ),
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 20.0, fontFamily: 'Karla'),
-            ),
-            SizedBox(
-              height: 40,
-            ),
+          actions: <Widget>[
+            Padding(
+                padding: EdgeInsets.only(right: 20.0),
+                child: GestureDetector(
+                  onTap: () {Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const Apropos())
+                  );},
+                  child: Icon(
+                      Icons.more_vert
 
-            // !TextFormField
-            TextFormField(
-              controller: controllerId,
-              decoration: const InputDecoration(
-                icon: Icon(Icons.person),
-                hintText: 'Veuillez saisir votre identifiant',
-                labelText: 'Identifiant',
-              ),
-              onSaved: (String? value) {
-                // This optional block of code can be used to run
-                // code when the user saves the form.
-              },
-              validator: (String? value) {
-                return (value != null && value.contains('@'))
-                    ? 'Do not use the @ char.'
-                    : null;
-              },
-            ),
-            SizedBox(
-              height: 40,
-            ),
-
-            // !PasswordField
-            PasswordField(
-              controller: controllerMDP,
-              backgroundColor: Colors.white.withOpacity(0.2),
-              hintText: 'Mot de passe',
-              inputDecoration: PasswordDecoration(
-                inputPadding: const EdgeInsets.symmetric(horizontal: 20),
-              ),
-              border: PasswordBorder(
-                border: OutlineInputBorder(
-                    borderSide: const BorderSide(width: 0, color: Colors.grey),
-                    borderRadius: BorderRadius.circular(25.7)),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(width: 0, color: Colors.grey),
-                  borderRadius: BorderRadius.circular(25.7),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(width: 0, color: Colors.grey),
-                  borderRadius: BorderRadius.circular(25.7),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 50,
-            ),
-
-            // !ButtonWidget
-            ButtonWidget(
-              text: 'Envoyer',
-              onClicked: () {
-               if (controllerId.text == 'user' &&
-                    controllerMDP.text == 'user') {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => pageintermediaireuser()));
-                } else {
-                  controllerId.clear();
-                  controllerMDP.clear();
-                }
-              },
+                  ),
+                )
             ),
           ],
         ),
-      ),
+          body: Padding(
+            padding: const EdgeInsets.all(70.0),
+            child: ListView(
+              children: <Widget>[
+                SizedBox(
+                  height: 40,
+                ),
+
+                // !TextRich
+                Text.rich(
+                  TextSpan(
+                    children: <TextSpan>[
+
+                      TextSpan(
+                          text: 'Page de connexion',
+                          style: TextStyle(color: Colors.blue)),
+                    ],
+                  ),
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20.0, fontFamily: 'Karla'),
+                ),
+                SizedBox(
+                  height: 40,
+                ),
+
+                // !TextFormField
+                TextFormField(
+                  controller: controllerId,
+                  autofocus: true,
+                  decoration: const InputDecoration(
+                    icon: Icon(Icons.person),
+                    hintText: 'Veuillez saisir votre identifiant',
+                    labelText: 'Identifiant',
+                  ),
+                  onSaved: (String? value) {
+                    // This optional block of code can be used to run
+                    // code when the user saves the form.
+                  },
+                  validator: (String? value) {
+                    return (value != null && value.contains('@'))
+                        ? 'Do not use the @ char.'
+                        : null;
+                  },
+                ),
+                SizedBox(
+                  height: 40,
+                ),
+
+                // !PasswordField
+                TextFormField(
+                  controller: controllerMDP,
+                  obscureText: true,
+                    onEditingComplete: () =>
+                        FocusScope.of(context).nextFocus(),
+                  decoration: const InputDecoration(
+                    icon: Icon(Icons.enhanced_encryption),
+                    hintText: 'Veuillez saisir votre Mot de passe',
+                    labelText: 'Mot de passe',
+                  ),
+                  onSaved: (String? value) {
+                    // This optional block of code can be used to run
+                    // code when the user saves the form.
+                  },
+                  validator: (String? value) {
+                    return (value != null && value.contains('@'))
+                        ? 'Do not use the @ char.'
+                        : null;
+                  },
+                ),
+                SizedBox(
+                  height: 80,
+                ),
+
+                // !ButtonWidget
+                ElevatedButton(
+
+                  onPressed: () {
+                   if (controllerId.text == 'user' &&
+                        controllerMDP.text == 'user') {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => questionnaire()));
+                    } else {
+                      controllerId.clear();
+                      controllerMDP.clear();
+                    }
+                  },
+                  child: const Text('Se connecter'),
+                  style: ElevatedButton.styleFrom(
+                      primary: Colors.blue,
+                      fixedSize: const Size(150, 75),
+                      shadowColor: Colors.black,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50))),
+                ),
+              ],
+            ),
+          ),
+        ),
     );
+
   }
 }

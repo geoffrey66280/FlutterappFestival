@@ -24,28 +24,41 @@ class Accueil extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String titl = 'Accueil';
-    return MaterialApp(
-      title: titl,
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text(titl),
-        ),
+    bool  _bool = false;
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Accueil"),
+        actions: <Widget>[
+          Padding(
+              padding: EdgeInsets.only(right: 20.0),
+              child: GestureDetector(
+                onTap: () {Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const Apropos())
+                );},
+                child: Icon(
+                    Icons.more_vert
+
+                ),
+              )
+          ),
+        ],
+      ),
         body: Center(
           child: Column(
             children: [
-              // !ElevatedButton
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const Apropos()));
-                },
-                child: const Text('A propos'),
-              ),
+              SizedBox(height: 50,),
 
+              SizedBox(height: 60,),
               // !CircleAvatar
-              CircleAvatar(
-                radius: 100,
-                child: Image.asset("image/logo.jpg"),
+              AnimatedPhysicalModel(
+                  shape: BoxShape.rectangle,
+                  elevation: _bool ? 0 : 15,
+                  color: Colors.white,
+                  shadowColor: Colors.black,
+                  duration: const Duration(milliseconds: 600),
+                child: SizedBox(height: 168, width: 300,
+                    child: Image.asset("image/mdrphoto.jpg")
+                  ),
               ),
               SizedBox(
                 height: 20,
@@ -62,14 +75,14 @@ class Accueil extends StatelessWidget {
                 child: const Text('Se Connecter'),
                 style: ElevatedButton.styleFrom(
                     primary: Colors.blue,
-                    fixedSize: const Size(150, 75),
+                    fixedSize: const Size(200, 50),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(50))),
               ),
             ],
           ),
         ),
-      ),
-    );
+        );
+
   }
 }
