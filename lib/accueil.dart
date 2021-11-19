@@ -82,21 +82,6 @@ class Accueil extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(50))),
               ),
-
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => WillPopScopePage()));
-                },
-                child: const Text('essai'),
-                style: ElevatedButton.styleFrom(
-                    primary: Colors.blue,
-                    fixedSize: const Size(200, 50),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50))),
-              ),
             ],
           ),
         ),

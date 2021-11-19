@@ -58,16 +58,6 @@ class questionnaireState extends State<questionnaire> {
         title: Text("Questionnaire"),
         actions: <Widget>[
           Padding(
-            padding: EdgeInsets.only(left: 20.0),
-            child: GestureDetector(
-              onTap: () {Navigator.push(context,
-                MaterialPageRoute(builder: (context) => Accueil())
-            ); },
-              child: Icon(
-                  Icons.more_vert),
-          ),
-          ),
-          Padding(
               padding: EdgeInsets.only(right: 20.0),
               child: GestureDetector(
                 onTap: () {Navigator.push(context,
@@ -250,7 +240,7 @@ class questionnaireState extends State<questionnaire> {
             ),
 
             // nbFormulaire envoyé pas fonctionnel !!!
-            buildText("Nombre de formlulaire envoyé : ${_increment}")
+            buildText("Nombre de formulaire envoyé : ${_increment}")
           ],
         ),
     );
