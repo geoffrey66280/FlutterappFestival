@@ -1,5 +1,6 @@
 import 'package:festival/accueil.dart';
 import 'package:festival/seconnecter.dart';
+import 'package:festival/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'questionnaire.dart';
@@ -98,4 +99,15 @@ class _MainPageState extends State<MainPage> {
         return Container();
     }
   }
+
+  Widget buildtheme(BuildContext context) => MaterialApp(
+    title: "oui",
+    themeMode: ThemeMode.system,
+    theme: MyThemes.lightTheme,
+    darkTheme: MyThemes.darkTheme,
+
+
+  );
+
 }
+

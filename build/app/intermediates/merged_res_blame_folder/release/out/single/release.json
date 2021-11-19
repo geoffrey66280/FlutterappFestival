@@ -128,6 +128,10 @@
         "source": "C:\\Users\\Geoff\\.gradle\\caches\\transforms-2\\files-2.1\\2e94107f30f39be366a17347c2bf100b\\core-1.1.0\\res\\drawable-hdpi-v4\\notification_bg_low_normal.9.png"
     },
     {
+        "merged": "C:\\Users\\Geoff\\Desktop\\Nouveau dossier\\project\\build\\app\\intermediates\\res\\merged\\release\\drawable_flute.png.flat",
+        "source": "C:\\Users\\Geoff\\Desktop\\Nouveau dossier\\project\\android\\app\\src\\main\\res\\drawable\\flute.png"
+    },
+    {
         "merged": "C:\\Users\\Geoff\\Desktop\\Nouveau dossier\\project\\build\\app\\intermediates\\res\\merged\\release\\drawable-hdpi-v4_notification_bg_low_pressed.9.png.flat",
         "source": "C:\\Users\\Geoff\\.gradle\\caches\\transforms-2\\files-2.1\\2e94107f30f39be366a17347c2bf100b\\core-1.1.0\\res\\drawable-hdpi-v4\\notification_bg_low_pressed.9.png"
     },

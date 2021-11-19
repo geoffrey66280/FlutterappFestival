@@ -1,8 +1,11 @@
 import 'package:festival/questionnaire.dart';
 import 'package:festival/seconnecter.dart';
+import 'package:festival/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'a_propos.dart';
+import 'essaie.dart';
 import 'main.dart';
 
 /**? Classe Accueil qui affiche la première page de l'application
@@ -28,7 +31,7 @@ class Accueil extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Accueil"),
-        actions: <Widget>[
+        actions: [
           Padding(
               padding: EdgeInsets.only(right: 20.0),
               child: GestureDetector(
@@ -56,8 +59,8 @@ class Accueil extends StatelessWidget {
                   color: Colors.white,
                   shadowColor: Colors.black,
                   duration: const Duration(milliseconds: 600),
-                child: SizedBox(height: 168, width: 300,
-                    child: Image.asset("image/mdrphoto.jpg")
+                child: SizedBox(height: 160, width: 250,
+                    child: Image.asset("image/actenrue.png")
                   ),
               ),
               SizedBox(
@@ -79,10 +82,26 @@ class Accueil extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(50))),
               ),
+
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => WillPopScopePage()));
+                },
+                child: const Text('essai'),
+                style: ElevatedButton.styleFrom(
+                    primary: Colors.blue,
+                    fixedSize: const Size(200, 50),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50))),
+              ),
             ],
           ),
         ),
         );
-
   }
+
 }
+

@@ -16,6 +16,14 @@
         "source": "C:\\Users\\Geoff\\Desktop\\Nouveau dossier\\project\\android\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
     },
     {
+        "merged": "C:\\Users\\Geoff\\Desktop\\Nouveau dossier\\project\\build\\app\\intermediates\\res\\merged\\debug\\drawable_flute.png.flat",
+        "source": "C:\\Users\\Geoff\\Desktop\\Nouveau dossier\\project\\android\\app\\src\\main\\res\\drawable\\flute.png"
+    },
+    {
+        "merged": "C:\\Users\\Geoff\\Desktop\\Nouveau dossier\\project\\build\\app\\intermediates\\res\\merged\\debug\\drawable_actenrue.png.flat",
+        "source": "C:\\Users\\Geoff\\Desktop\\Nouveau dossier\\project\\android\\app\\src\\main\\res\\drawable\\actenrue.png"
+    },
+    {
         "merged": "C:\\Users\\Geoff\\Desktop\\Nouveau dossier\\project\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
         "source": "C:\\Users\\Geoff\\Desktop\\Nouveau dossier\\project\\android\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
     },

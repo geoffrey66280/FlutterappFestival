@@ -1,9 +1,11 @@
 import 'package:festival/main.dart';
 import 'package:festival/utils.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 
 import 'a_propos.dart';
+import 'accueil.dart';
 import 'bouton_widget.dart';
 
 class questionnaire extends StatefulWidget {
@@ -18,7 +20,8 @@ class questionnaire extends StatefulWidget {
 
 class questionnaireState extends State<questionnaire> {
   //déclaration des variables
-
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+  bool retouroupas = false;
   String def = "";
   String dropdownValue = 'Toulouse';
   final textController2 = TextEditingController();
@@ -37,6 +40,10 @@ class questionnaireState extends State<questionnaire> {
   // Widget de la note du festival (nombre)
   int indexTop = 0;
 
+      Widget buildToggle() => CupertinoSwitch(
+  value: retouroupas,
+  onChanged: (value) => setState(() => retouroupas = value),
+  );
   @override
   Widget build(BuildContext context) {
     String titl = 'Questionnaire';
@@ -44,13 +51,22 @@ class questionnaireState extends State<questionnaire> {
     final double min = 0;
     final double max = 10;
     final divisions = labels.length;
+
+
     return Scaffold(
-
-
-
       appBar: AppBar(
-        title: Text("Accueil"),
+        title: Text("Questionnaire"),
         actions: <Widget>[
+          Padding(
+            padding: EdgeInsets.only(left: 20.0),
+            child: GestureDetector(
+              onTap: () {Navigator.push(context,
+                MaterialPageRoute(builder: (context) => Accueil())
+            ); },
+              child: Icon(
+                  Icons.more_vert),
+          ),
+          ),
           Padding(
               padding: EdgeInsets.only(right: 20.0),
               child: GestureDetector(
@@ -213,6 +229,7 @@ class questionnaireState extends State<questionnaire> {
               },
             ),
 
+
             SizedBox(
               height: 30,
             ), // espace
@@ -239,7 +256,40 @@ class questionnaireState extends State<questionnaire> {
     );
 
   }
-
+  Widget buildScope(BuildContext context) => WillPopScope(
+    onWillPop: () async {
+      if (!retouroupas) {
+        scaffoldKey.currentState!
+          ..hideCurrentSnackBar()
+          ..showSnackBar(
+            SnackBar(content: Text('Not allowed to pop page!')),
+          );
+      }
+      return Future.value(retouroupas);
+    },
+    child: Scaffold(
+      key: scaffoldKey,
+      appBar: AppBar(
+        title: Text("oui"),
+        centerTitle: true,
+        leading: retouroupas ? BackButton() : Container(),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const SizedBox(height: 24),
+            Text(
+              'Is Allowed To Pop Page?',
+              style: TextStyle(fontSize: 20),
+            ),
+            const SizedBox(height: 12),
+            buildToggle(),
+          ],
+        ),
+      ),
+    ),
+  );
   Widget buildLabel({
     required String label,
     required Color color,
