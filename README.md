@@ -1,8 +1,8 @@
 # Languages 
 
-Flutter FrameWork - Dart language - AndroidStudio project
-Contains XML/Graddle files
-flutter.yml is building an apk release
+- Flutter FrameWork - Dart language - AndroidStudio project
+- Contains XML/Graddle files
+- flutter.yml is building an apk release
 
 ## Purpose of the application
 
