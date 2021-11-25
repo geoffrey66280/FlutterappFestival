@@ -1,9 +1,10 @@
-import 'package:festival/bouton_widget.dart';
-import 'package:festival/pageintermediaireuser.dart';
-import 'package:festival/questionnaire.dart';
+import 'bouton_widget.dart';
+import 'pageintermediaireuser.dart';
+import 'questionnaire.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:passwordfield/passwordfield.dart';
+import 'questionnaire.dart';
+
 
 import 'a_propos.dart';
 

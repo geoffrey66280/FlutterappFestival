@@ -1,8 +1,7 @@
-import 'package:festival/main.dart';
-import 'package:festival/utils.dart';
+import 'main.dart';
+import 'utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:syncfusion_flutter_sliders/sliders.dart';
 
 import 'a_propos.dart';
 import 'accueil.dart';
@@ -238,6 +237,7 @@ class questionnaireState extends State<questionnaire> {
                 });
               },
             ),
+
 
             // nbFormulaire envoyé pas fonctionnel !!!
             buildText("Nombre de formulaire envoyé : ${_increment}")

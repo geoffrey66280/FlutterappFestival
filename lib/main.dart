@@ -1,6 +1,6 @@
-import 'package:festival/accueil.dart';
-import 'package:festival/seconnecter.dart';
-import 'package:festival/theme.dart';
+import 'accueil.dart';
+import 'seconnecter.dart';
+import 'theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'questionnaire.dart';
