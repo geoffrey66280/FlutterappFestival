@@ -129,25 +129,7 @@ class questionnaireState extends State<questionnaire> {
             SizedBox(
               height: 40,
             ),
-            TextFormField(
-                autocorrect: true,
-                controller: textController2,
-                decoration: InputDecoration(
-                  labelText: 'Pour quelles raisons ?',
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(16),
-                    borderSide: BorderSide(color: Colors.black, width: 3),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(16),
-                    borderSide: BorderSide(color: Colors.green, width: 3),
-                  ),
-                ),
-                validator: (String? value) {
-                  if (value == null) {
-                    return 'Veuillez saisir du texte';
-                  }
-                }),
+            getEcrire(),
         SizedBox(height: 30,),
 
            Container(
@@ -359,5 +341,33 @@ Slider getSlide() {
     onChanged: (_value) =>
         setState(() => this.indexTop = _value.toInt()),
   );
+}
+
+TextFormField getEcrire() {
+  return TextFormField(
+      autocorrect: true,
+      controller: textController2,
+      decoration: InputDecoration(
+        labelText: getBDText(),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16),
+          borderSide: BorderSide(color: Colors.black, width: 3),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16),
+          borderSide: BorderSide(color: Colors.green, width: 3),
+        ),
+      ),
+      validator: (String? value) {
+        if (value == null) {
+          return 'Veuillez saisir du texte';
+        }
+      }
+      );
+}
+
+String getBDText() {
+    return 'Texte pas encore dynmaique';
+
 }
 }
