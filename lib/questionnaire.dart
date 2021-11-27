@@ -2,7 +2,7 @@ import 'main.dart';
 import 'utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'test.dart';
 import 'a_propos.dart';
 import 'accueil.dart';
 import 'bouton_widget.dart';
@@ -39,6 +39,8 @@ class questionnaireState extends State<questionnaire> {
   // Widget de la note du festival (nombre)
   int indexTop = 0;
 
+  get labels => ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
+
       Widget buildToggle() => CupertinoSwitch(
   value: retouroupas,
   onChanged: (value) => setState(() => retouroupas = value),
@@ -50,6 +52,8 @@ class questionnaireState extends State<questionnaire> {
     final double min = 0;
     final double max = 10;
     final divisions = labels.length;
+
+
 
 
     return Scaffold(
@@ -79,33 +83,8 @@ class questionnaireState extends State<questionnaire> {
               child: buildText('Note du festival'),
             ),
 
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: 10),
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: Utils.modelBuilder(
-                    labels,
-                    (index, label) {
-                      final selectedColor = Colors.black;
-                      final unselectedColor = Colors.black.withOpacity(0.3);
-                      final isSelected = index <= indexTop;
-                      final color = isSelected ? selectedColor : unselectedColor;
-
-                      return buildLabel(label: labels[index], color: color);
-                    },
-                  )),
-            ),
-
-            Slider(
-              value: indexTop.toDouble(),
-              min: 0,
-              max: 10,
-              divisions: 10,
-              activeColor: Colors.blue,
-              label: labels[indexTop],
-              onChanged: (_value) =>
-                  setState(() => this.indexTop = _value.toInt()),
-            ),
+            getList(),
+            getSlide(),
 
             buildText("Recommanderiez vous le festival à vos proches ?"),
             Row(
@@ -350,5 +329,35 @@ class questionnaireState extends State<questionnaire> {
     );
   }
 
+Container getList() {
+  return Container(
+    margin: EdgeInsets.symmetric(horizontal: 10),
+    child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: Utils.modelBuilder(
+          labels,
+              (index, label) {
+            final selectedColor = Colors.black;
+            final unselectedColor = Colors.black.withOpacity(0.3);
+            final isSelected = index <= indexTop;
+            final color = isSelected ? selectedColor : unselectedColor;
 
+            return buildLabel(label: labels[index], color: color);
+          },
+        )),
+  );
+}
+
+Slider getSlide() {
+  return Slider(
+    value: indexTop.toDouble(),
+    min: 0,
+    max: 10,
+    divisions: 10,
+    activeColor: Colors.blue,
+    label: labels[indexTop],
+    onChanged: (_value) =>
+        setState(() => this.indexTop = _value.toInt()),
+  );
+}
 }
