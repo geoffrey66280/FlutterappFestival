@@ -1,8 +1,11 @@
 <?php
 try {
-    $conn = new PDO('mysql:host=localhost;dbname=user_ptut; charset=UTF8',
-        'user_ptut', 'ZQSVEAbwsxpB7eth', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+    $conn = new PDO('mysql:host=localhost;dbname=user_ptut','user_ptut', 'ZQSVEAbwsxpB7eth');
+    $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+    echo "Connexionnnnn";
 } catch (PDOException $e) {
-    echo "Erreur : " . $e->getMessage();
-    die();
+    echo $e->getMessage();
+    die('could not connect');
+
 }
+?>

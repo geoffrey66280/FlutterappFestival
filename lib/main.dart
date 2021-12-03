@@ -84,17 +84,6 @@ class _MainPageState extends State<MainPage> {
     switch (index) {
       case 0:
         return Accueil();
-      case 1:
-        return questionnaire();
-      /*
-      case 3:
-        return const test();
-        */
-
-      case 2:
-        return const seconnecter();
-      case 3:
-        return const Apropos();
       default:
         return Container();
     }

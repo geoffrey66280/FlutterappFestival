@@ -129,7 +129,7 @@ class questionnaireState extends State<questionnaire> {
             SizedBox(
               height: 40,
             ),
-            getEcrire(),
+            getEcrire(getBDText()),
         SizedBox(height: 30,),
 
            Container(
@@ -207,40 +207,7 @@ class questionnaireState extends State<questionnaire> {
     );
 
   }
-  Widget buildScope(BuildContext context) => WillPopScope(
-    onWillPop: () async {
-      if (!retouroupas) {
-        scaffoldKey.currentState!
-          ..hideCurrentSnackBar()
-          ..showSnackBar(
-            SnackBar(content: Text('Not allowed to pop page!')),
-          );
-      }
-      return Future.value(retouroupas);
-    },
-    child: Scaffold(
-      key: scaffoldKey,
-      appBar: AppBar(
-        title: Text("oui"),
-        centerTitle: true,
-        leading: retouroupas ? BackButton() : Container(),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const SizedBox(height: 24),
-            Text(
-              'Is Allowed To Pop Page?',
-              style: TextStyle(fontSize: 20),
-            ),
-            const SizedBox(height: 12),
-            buildToggle(),
-          ],
-        ),
-      ),
-    ),
-  );
+
   Widget buildLabel({
     required String label,
     required Color color,
@@ -315,6 +282,7 @@ Container getList() {
   return Container(
     margin: EdgeInsets.symmetric(horizontal: 10),
     child: Row(
+
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: Utils.modelBuilder(
           labels,
@@ -343,12 +311,15 @@ Slider getSlide() {
   );
 }
 
-TextFormField getEcrire() {
-  return TextFormField(
+
+
+TextFormField getEcrire(String texteQ) {
+  return
+      TextFormField(
       autocorrect: true,
       controller: textController2,
       decoration: InputDecoration(
-        labelText: getBDText(),
+        labelText: texteQ,
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
           borderSide: BorderSide(color: Colors.black, width: 3),
@@ -364,10 +335,30 @@ TextFormField getEcrire() {
         }
       }
       );
+
 }
 
 String getBDText() {
     return 'Texte pas encore dynmaique';
 
 }
+  Container getl() {
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 10),
+      child: Row(
+
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: Utils.modelBuilder(
+            labels,
+                (index, label) {
+              final selectedColor = Colors.black;
+              final unselectedColor = Colors.black.withOpacity(0.3);
+              final isSelected = index <= indexTop;
+              final color = isSelected ? selectedColor : unselectedColor;
+
+              return buildLabel(label: labels[index], color: color);
+            },
+          )),
+    );
+  }
 }

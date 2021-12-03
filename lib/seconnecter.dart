@@ -1,13 +1,11 @@
-import 'bouton_widget.dart';
-import 'pageintermediaireuser.dart';
+import 'dart:convert';
+
+import 'login.dart';
 import 'questionnaire.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'questionnaire.dart';
-
-
 import 'a_propos.dart';
-
+import 'package:http/http.dart' as http;
 /**?
  * ? Classe seconnecter: page de connexion de l'utilisateur
    ?*/
@@ -18,6 +16,7 @@ class seconnecter extends StatefulWidget {
   @override
   State<seconnecter> createState() => _MyStatefulWidgetState();
 }
+
 /**?
  * ? Classe _MyStatefulWidgetState: page de connexion de l'utilisateur
  * ? extends de l'état de la classe seconnecter
@@ -97,14 +96,9 @@ class _MyStatefulWidgetState extends State<seconnecter> {
                     labelText: 'Identifiant',
                   ),
                   onSaved: (String? value) {
-                    // This optional block of code can be used to run
-                    // code when the user saves the form.
+
                   },
-                  validator: (String? value) {
-                    return (value != null && value.contains('@'))
-                        ? 'Do not use the @ char.'
-                        : null;
-                  },
+
                 ),
                 SizedBox(
                   height: 40,
@@ -139,6 +133,7 @@ class _MyStatefulWidgetState extends State<seconnecter> {
                 ElevatedButton(
 
                   onPressed: () {
+logine.connexion();
                    if (controllerId.text == 'user' &&
                         controllerMDP.text == 'user') {
                       Navigator.push(
@@ -165,4 +160,7 @@ class _MyStatefulWidgetState extends State<seconnecter> {
     );
 
   }
+
 }
+
+
