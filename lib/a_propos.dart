@@ -14,7 +14,12 @@ class Apropos extends StatelessWidget {
     ),
     body: ListView(
     children: <Widget>[
-
+      Padding(
+          padding: EdgeInsets.only(right: 20.0),
+          ),
+      const SizedBox(height: 50),
+        Text('Les informations du questionnaire ne seront pas des infomations sensibles (nom, prénom, âge, etc..): les réponses seront sous format anonyme',
+    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
 
       ],
     ),

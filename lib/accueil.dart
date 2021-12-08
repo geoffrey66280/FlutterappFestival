@@ -26,7 +26,7 @@ class Accueil extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String titl = 'Accueil';
-    bool  _bool = false;
+    bool _bool = false;
     return Scaffold(
       appBar: AppBar(
         title: Text("Accueil"),
@@ -34,58 +34,58 @@ class Accueil extends StatelessWidget {
           Padding(
               padding: EdgeInsets.only(right: 20.0),
               child: GestureDetector(
-                onTap: () {Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const Apropos())
-                );},
-                child: Icon(
-                    Icons.more_vert
-
-                ),
-              )
-          ),
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const Apropos()));
+                },
+                child: Icon(Icons.more_vert),
+              )),
         ],
       ),
-        body: Center(
-          child: Column(
-            children: [
-              SizedBox(height: 50,),
+      body: Center(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 50,
+            ),
 
-              SizedBox(height: 60,),
-              // !CircleAvatar
-              AnimatedPhysicalModel(
-                  shape: BoxShape.rectangle,
-                  elevation: _bool ? 0 : 15,
-                  color: Colors.white,
-                  shadowColor: Colors.black,
-                  duration: const Duration(milliseconds: 600),
-                child: SizedBox(height: 160, width: 250,
-                    child: Image.asset("image/actenrue.png")
-                  ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
+            SizedBox(
+              height: 60,
+            ),
+            // !CircleAvatar
+            AnimatedPhysicalModel(
+              shape: BoxShape.rectangle,
+              elevation: _bool ? 0 : 15,
+              color: Colors.white,
+              shadowColor: Colors.black,
+              duration: const Duration(milliseconds: 600),
+              child: SizedBox(
+                  height: 160,
+                  width: 250,
+                  child: Image.asset("image/actenrue.png")),
+            ),
+            SizedBox(
+              height: 20,
+            ),
 
-              // !ElevatedButton
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const seconnecter()));
-                },
-                child: const Text('Se Connecter'),
-                style: ElevatedButton.styleFrom(
-                    primary: Colors.blue,
-                    fixedSize: const Size(200, 50),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50))),
-              ),
-            ],
-          ),
+            // !ElevatedButton
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const seconnecter()));
+              },
+              child: const Text('Se Connecter'),
+              style: ElevatedButton.styleFrom(
+                  primary: Colors.blue,
+                  fixedSize: const Size(200, 50),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50))),
+            ),
+          ],
         ),
-        );
+      ),
+    );
   }
-
 }
-

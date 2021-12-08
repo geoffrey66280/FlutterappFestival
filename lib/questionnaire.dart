@@ -6,6 +6,7 @@ import 'test.dart';
 import 'a_propos.dart';
 import 'accueil.dart';
 import 'bouton_widget.dart';
+import 'login.dart';
 
 class questionnaire extends StatefulWidget {
   @override
@@ -41,10 +42,10 @@ class questionnaireState extends State<questionnaire> {
 
   get labels => ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
 
-      Widget buildToggle() => CupertinoSwitch(
-  value: retouroupas,
-  onChanged: (value) => setState(() => retouroupas = value),
-  );
+  Widget buildToggle() => CupertinoSwitch(
+        value: retouroupas,
+        onChanged: (value) => setState(() => retouroupas = value),
+      );
   @override
   Widget build(BuildContext context) {
     String titl = 'Questionnaire';
@@ -53,9 +54,6 @@ class questionnaireState extends State<questionnaire> {
     final double max = 10;
     final divisions = labels.length;
 
-
-
-
     return Scaffold(
       appBar: AppBar(
         title: Text("Questionnaire"),
@@ -63,149 +61,138 @@ class questionnaireState extends State<questionnaire> {
           Padding(
               padding: EdgeInsets.only(right: 20.0),
               child: GestureDetector(
-                onTap: () {Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const Apropos())
-                );},
-                child: Icon(
-                    Icons.more_vert
-
-                ),
-              )
-          ),
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const Apropos()));
+                },
+                child: Icon(Icons.more_vert),
+              )),
         ],
       ),
-        body: ListView(
-          padding: EdgeInsets.all(10),
-          children: [
-            buildNumber(),
-            const SizedBox(height: 0),
-            Center(
-              child: buildText('Note du festival'),
-            ),
+      body: ListView(
+        padding: EdgeInsets.all(10),
+        children: [
+          buildNumber(),
+          const SizedBox(height: 0),
+          Center(
+            child: buildText('Note du festival'),
+          ),
 
-            getList(),
-            getSlide(),
+          getList(),
+          getSlide(),
 
-            buildText("Recommanderiez vous le festival à vos proches ?"),
-            Row(
-              children: [
-                Checkbox(
-                    value: isChecked2,
-                    onChanged: (bool? value) {
-                      setState(() {
-                        isChecked2 = value!;
-                        if (isChecked3 = true) {
-                          isChecked3 = false;
-                        }
-                      });
-                    }),
-                const Text(
-                  "Oui",
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w400,
-                  ),
+          buildText("Recommanderiez vous le festival à vos proches ?"),
+          Row(
+            children: [
+              Checkbox(
+                  value: isChecked2,
+                  onChanged: (bool? value) {
+                    setState(() {
+                      isChecked2 = value!;
+                      if (isChecked3 = true) {
+                        isChecked3 = false;
+                      }
+                    });
+                  }),
+              const Text(
+                "Oui",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w400,
                 ),
-                Checkbox(
-                    value: isChecked3,
-                    onChanged: (bool? value) {
-                      setState(() {
-                        isChecked3 = value!;
-                        if (isChecked2 = true) {
-                          isChecked2 = false;
-                        }
-                      });
-                    }),
-                const Text(
-                  "Non",
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w400,
-                  ),
+              ),
+              Checkbox(
+                  value: isChecked3,
+                  onChanged: (bool? value) {
+                    setState(() {
+                      isChecked3 = value!;
+                      if (isChecked2 = true) {
+                        isChecked2 = false;
+                      }
+                    });
+                  }),
+              const Text(
+                "Non",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w400,
                 ),
-              ],
-            ),
+              ),
+            ],
+          ),
 
-            SizedBox(
-              height: 40,
-            ),
-            getEcrire(getBDText()),
-        SizedBox(height: 30,),
+          SizedBox(
+            height: 40,
+          ),
+          getEcrire(getBDText()),
+          SizedBox(
+            height: 30,
+          ),
 
-           Container(
+          Container(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                Center(
-                  child: builddrop(context),
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Center(
+                child: builddrop(context),
+              ),
+            ],
+          )),
 
-                ),
+          SizedBox(
+            height: 30,
+          ), // Espace entre les widgets
 
-                ],
-              )
-            ),
+          // Bouton envoyer
+          ButtonWidget(
+            text: 'Envoyer',
+            onClicked: () async {
+              logine.post();
+              ScaffoldMessenger.of(context)
+                  .showSnackBar(SnackBar(content: Text('Formulaire envoyé')));
 
-            SizedBox(
-              height: 30,
-            ), // Espace entre les widgets
+              String raison = textController2.text;
+              // Quand cliquer sur le bouton alors envoyer les données
+              print('La note du festival est : ${indexTop}');
+              print('raisons : ${textController2.text}');
+              // incrémenter le nbFormulaire
+              setState(() {
+                print('Numéro du formulaire : ${_increment++}');
+              });
 
+              // suppresion après envoi
+              textController2.clear();
+              isChecked2 = false;
+              isChecked3 = false;
+              isChecked1 = false;
+              isChecked = false;
+            },
+          ),
 
-            // Bouton envoyer
-            ButtonWidget(
-              text: 'Envoyer',
-              onClicked: () {
+          SizedBox(
+            height: 30,
+          ), // espace
 
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Formulaire envoyé')
-                  )
-                  );
-
-                String raison = textController2.text;
-                // Quand cliquer sur le bouton alors envoyer les données
-                print('La note du festival est : ${indexTop}');
-                print('raisons : ${textController2.text}');
-                // incrémenter le nbFormulaire
-                setState(() {
-                  print('Numéro du formulaire : ${_increment++}');
-                });
-
-                // suppresion après envoi
-                textController2.clear();
+          // Bouton Annuler
+          ButtonWidgete(
+            text: 'Annuler',
+            onClicked: () {
+              // Quand cliquer sur annuler => supprimer les champs
+              textController2.clear();
+              setState(() {
                 isChecked2 = false;
                 isChecked3 = false;
                 isChecked1 = false;
                 isChecked = false;
+              });
+            },
+          ),
 
-
-              },
-            ),
-
-
-            SizedBox(
-              height: 30,
-            ), // espace
-
-            // Bouton Annuler
-            ButtonWidgete(
-              text: 'Annuler',
-              onClicked: () {
-                // Quand cliquer sur annuler => supprimer les champs
-                textController2.clear();
-                setState(() {
-                  isChecked2 = false;
-                  isChecked3 = false;
-                  isChecked1 = false;
-                  isChecked = false;
-                });
-              },
-            ),
-
-
-            // nbFormulaire envoyé pas fonctionnel !!!
-            buildText("Nombre de formulaire envoyé : ${_increment}")
-          ],
-        ),
+          // nbFormulaire envoyé pas fonctionnel !!!
+          buildText("Nombre de formulaire envoyé : ${_increment}")
+        ],
+      ),
     );
-
   }
 
   Widget buildLabel({
@@ -246,7 +233,6 @@ class questionnaireState extends State<questionnaire> {
         ),
       );
 
-
   Widget builddrop(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
@@ -275,82 +261,18 @@ class questionnaireState extends State<questionnaire> {
           }).toList(),
         ),
       ],
+
     );
   }
 
-Container getList() {
-  return Container(
-    margin: EdgeInsets.symmetric(horizontal: 10),
-    child: Row(
-
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: Utils.modelBuilder(
-          labels,
-              (index, label) {
-            final selectedColor = Colors.black;
-            final unselectedColor = Colors.black.withOpacity(0.3);
-            final isSelected = index <= indexTop;
-            final color = isSelected ? selectedColor : unselectedColor;
-
-            return buildLabel(label: labels[index], color: color);
-          },
-        )),
-  );
-}
-
-Slider getSlide() {
-  return Slider(
-    value: indexTop.toDouble(),
-    min: 0,
-    max: 10,
-    divisions: 10,
-    activeColor: Colors.blue,
-    label: labels[indexTop],
-    onChanged: (_value) =>
-        setState(() => this.indexTop = _value.toInt()),
-  );
-}
-
-
-
-TextFormField getEcrire(String texteQ) {
-  return
-      TextFormField(
-      autocorrect: true,
-      controller: textController2,
-      decoration: InputDecoration(
-        labelText: texteQ,
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16),
-          borderSide: BorderSide(color: Colors.black, width: 3),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16),
-          borderSide: BorderSide(color: Colors.green, width: 3),
-        ),
-      ),
-      validator: (String? value) {
-        if (value == null) {
-          return 'Veuillez saisir du texte';
-        }
-      }
-      );
-
-}
-
-String getBDText() {
-    return 'Texte pas encore dynmaique';
-
-}
-  Container getl() {
+  Container getList() {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 10),
       child: Row(
-
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: Utils.modelBuilder(
             labels,
-                (index, label) {
+            (index, label) {
               final selectedColor = Colors.black;
               final unselectedColor = Colors.black.withOpacity(0.3);
               final isSelected = index <= indexTop;
@@ -359,6 +281,66 @@ String getBDText() {
               return buildLabel(label: labels[index], color: color);
             },
           )),
+    );
+  }
+
+  Slider getSlide() {
+    return Slider(
+      value: indexTop.toDouble(),
+      min: 0,
+      max: 10,
+      divisions: 10,
+      activeColor: Colors.blue,
+      label: labels[indexTop],
+      onChanged: (_value) => setState(() => this.indexTop = _value.toInt()),
+    );
+  }
+
+  TextFormField getEcrire(String texteQ) {
+    return TextFormField(
+        autocorrect: true,
+        controller: textController2,
+        decoration: InputDecoration(
+          labelText: texteQ,
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16),
+            borderSide: BorderSide(color: Colors.black, width: 3),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16),
+            borderSide: BorderSide(color: Colors.green, width: 3),
+          ),
+        ),
+        validator: (String? value) {
+          if (value == null) {
+            return 'Veuillez saisir du texte';
+          }
+        });
+  }
+
+  String getBDText() {
+    return 'Texte pas encore dynmaique';
+  }
+
+  Container getl() {
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 10),
+      child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: Utils.modelBuilder(
+            labels,
+            (index, label) {
+              final selectedColor = Colors.black;
+              final unselectedColor = Colors.black.withOpacity(0.3);
+              final isSelected = index <= indexTop;
+              final color = isSelected ? selectedColor : unselectedColor;
+
+              return buildLabel(label: labels[index], color: color);
+            },
+
+          )
+      ),
+
     );
   }
 }
