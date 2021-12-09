@@ -1,6 +1,5 @@
 import 'accueil.dart';
 import 'seconnecter.dart';
-import 'theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'questionnaire.dart';
@@ -89,13 +88,6 @@ class _MainPageState extends State<MainPage> {
     }
   }
 
-  Widget buildtheme(BuildContext context) => MaterialApp(
-    title: "oui",
-    themeMode: ThemeMode.system,
-    theme: MyThemes.lightTheme,
-    darkTheme: MyThemes.darkTheme,
 
-
-  );
 }
 

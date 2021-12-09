@@ -1,10 +1,8 @@
 import 'questionnaire.dart';
 import 'seconnecter.dart';
-import 'theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'a_propos.dart';
-import 'essaie.dart';
 import 'main.dart';
 
 /**? Classe Accueil qui affiche la première page de l'application
