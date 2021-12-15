@@ -4,7 +4,7 @@
 - Contains XML/Graddle files
 - flutter.yml is building an apk release
 
-## Purpose of the application
+## Purpose of the application :
 
 FlutterappFestival is our mobile application that allows us to ask questions to peoples in a festival,
 then we'll stock all these informations to make datatable in a website with a database.
