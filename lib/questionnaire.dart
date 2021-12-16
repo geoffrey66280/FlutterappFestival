@@ -3,7 +3,7 @@ import 'utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'a_propos.dart';
-import 'accueil.dart';
+import 'methodes.dart';
 import 'bouton_widget.dart';
 import 'login.dart';
 
@@ -72,9 +72,10 @@ class questionnaireState extends State<questionnaire> {
         padding: EdgeInsets.all(10),
         children: [
           buildNumber(),
+
           const SizedBox(height: 0),
           Center(
-            child: buildText('Note du festival'),
+            child: buildText('note du festival'),
           ),
 
           getList(),
@@ -83,47 +84,14 @@ class questionnaireState extends State<questionnaire> {
           buildText("Recommanderiez vous le festival à vos proches ?"),
           Row(
             children: [
-              Checkbox(
-                  value: isChecked2,
-                  onChanged: (bool? value) {
-                    setState(() {
-                      isChecked2 = value!;
-                      if (isChecked3 = true) {
-                        isChecked3 = false;
-                      }
-                    });
-                  }),
-              const Text(
-                "Oui",
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-              Checkbox(
-                  value: isChecked3,
-                  onChanged: (bool? value) {
-                    setState(() {
-                      isChecked3 = value!;
-                      if (isChecked2 = true) {
-                        isChecked2 = false;
-                      }
-                    });
-                  }),
-              const Text(
-                "Non",
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
+
             ],
           ),
 
           SizedBox(
             height: 40,
           ),
-          getEcrire(getBDText()),
+          methodes.getEcrire('ouiii',textController2),
           SizedBox(
             height: 30,
           ),
@@ -292,54 +260,6 @@ class questionnaireState extends State<questionnaire> {
       activeColor: Colors.blue,
       label: labels[indexTop],
       onChanged: (_value) => setState(() => this.indexTop = _value.toInt()),
-    );
-  }
-
-  TextFormField getEcrire(String texteQ) {
-    return TextFormField(
-        autocorrect: true,
-        controller: textController2,
-        decoration: InputDecoration(
-          labelText: texteQ,
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(16),
-            borderSide: BorderSide(color: Colors.black, width: 3),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(16),
-            borderSide: BorderSide(color: Colors.green, width: 3),
-          ),
-        ),
-        validator: (String? value) {
-          if (value == null) {
-            return 'Veuillez saisir du texte';
-          }
-        });
-  }
-
-  String getBDText() {
-    return 'Texte pas encore dynmaique';
-  }
-
-  Container getl() {
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: 10),
-      child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: Utils.modelBuilder(
-            labels,
-            (index, label) {
-              final selectedColor = Colors.black;
-              final unselectedColor = Colors.black.withOpacity(0.3);
-              final isSelected = index <= indexTop;
-              final color = isSelected ? selectedColor : unselectedColor;
-
-              return buildLabel(label: labels[index], color: color);
-            },
-
-          )
-      ),
-
     );
   }
 }

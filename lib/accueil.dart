@@ -1,4 +1,6 @@
-import 'questionnaire.dart';
+import 'dart:convert';
+
+import 'login.dart';
 import 'seconnecter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -73,6 +75,50 @@ class Accueil extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                         builder: (context) => const seconnecter()));
+                int indiceOuvrant = 0;
+                int indiceFermant;
+                var donnee;
+                List tab;
+                List numero = [];
+                List max = [];
+                List min = [];
+                List listeReponse = [];
+                List type = [];
+                List evenement = [];
+                List libelle= [];
+
+                logine.geti('http://193.54.227.216/getQuestionnaire.php').then((value) => {
+
+
+                  for (int i = 0; i < value.length; i++) {
+
+                    if (value[i] == '[') {
+                      indiceOuvrant = i,
+                    },
+
+                    if (value[i] == ']') {
+                      indiceFermant = i,
+                      donnee = value.substring(indiceOuvrant, indiceFermant + 1),
+
+                      tab = donnee.split(";"),
+                      evenement.add(tab[0]),
+                      numero.add(tab[1]),
+                      libelle.add(tab[2]),
+                      type.add(tab[3]),
+                      min.add(tab[4]),
+                      max.add(tab[5]),
+                      listeReponse.add(tab[6]),
+
+                    },
+                  },
+                  print(evenement),
+                  print(numero),
+                  print(libelle),
+                  print(type),
+                  print(min),
+                  print(max),
+                  print(listeReponse)
+                });
               },
               child: const Text('Se Connecter'),
               style: ElevatedButton.styleFrom(

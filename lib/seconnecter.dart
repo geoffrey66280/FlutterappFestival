@@ -1,13 +1,9 @@
-import 'dart:convert';
-
-import 'package:festival/modles/try.dart';
-
 import 'login.dart';
 import 'questionnaire.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'a_propos.dart';
-import 'package:http/http.dart' as http;
+
 
 /**?
  * ? Classe seconnecter: page de connexion de l'utilisateur
@@ -135,7 +131,9 @@ class _MyStatefulWidgetState extends State<seconnecter> {
                   logine.geti('http://193.54.227.216/getData.php').then((value) => {
 
                     tab = value.split('"'),
+
                     id = tab[3],
+                    print(tab[3]),
                     pwd = tab[7],
                   if (controllerId.text == id  &&
                   controllerMDP.text == pwd) {
