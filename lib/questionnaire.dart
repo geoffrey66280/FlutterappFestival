@@ -66,8 +66,60 @@ class questionnaireState extends State<questionnaire> {
                 },
                 child: Icon(Icons.more_vert),
               )),
+          Padding(
+              padding: EdgeInsets.only(right: 20.0),
+              child: GestureDetector(
+                onTap: () {
+                  int indiceOuvrant = 0;
+                  int indiceFermant;
+                  var donnee;
+                  List tab;
+                  List numero = [];
+                  List max = [];
+                  List min = [];
+                  List listeReponse = [];
+                  List type = [];
+                  List evenement = [];
+                  List libelle = [];
+
+                  logine
+                      .geti('http://193.54.227.216/getQuestionnaire.php')
+                      .then((value) => {
+                            for (int i = 0; i < value.length; i++)
+                              {
+                                if (value[i] == '[')
+                                  {
+                                    indiceOuvrant = i,
+                                  },
+                                if (value[i] == ']')
+                                  {
+                                    indiceFermant = i,
+                                    donnee = value.substring(
+                                        indiceOuvrant, indiceFermant + 1),
+                                    tab = donnee.split(";"),
+                                    evenement.add(tab[0]),
+                                    numero.add(tab[1]),
+                                    libelle.add(tab[2]),
+                                    type.add(tab[3]),
+                                    min.add(tab[4]),
+                                    max.add(tab[5]),
+                                    listeReponse.add(tab[6]),
+                                  },
+                              },
+                            print(evenement),
+                            print(numero),
+                            print(libelle),
+                            print(type),
+                            print(min),
+                            print(max),
+                            print(listeReponse)
+                          });
+                },
+                child: Icon(Icons.more_vert),
+              )),
         ],
       ),
+
       body: ListView(
         padding: EdgeInsets.all(10),
         children: [
@@ -83,15 +135,14 @@ class questionnaireState extends State<questionnaire> {
 
           buildText("Recommanderiez vous le festival à vos proches ?"),
           Row(
-            children: [
-
-            ],
+            children: [],
           ),
 
           SizedBox(
             height: 40,
           ),
-          methodes.getEcrire('ouiii',textController2),
+          methodes.getEcrire('ouiii', textController2),
+
           SizedBox(
             height: 30,
           ),
@@ -228,7 +279,6 @@ class questionnaireState extends State<questionnaire> {
           }).toList(),
         ),
       ],
-
     );
   }
 
@@ -261,5 +311,17 @@ class questionnaireState extends State<questionnaire> {
       label: labels[indexTop],
       onChanged: (_value) => setState(() => this.indexTop = _value.toInt()),
     );
+  }
+
+  getQuestionnaire(List type) {
+    for (int i = 0 ; i < type.length ; i++){
+    switch(type[i]) {
+      case 'string':
+        methodes.getEcrire('non', textController3);
+        break;
+      default:
+        print('oui');
+      }
+    }
   }
 }
